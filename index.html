@@ -1,13 +1,318 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>js-tutorial</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 학습 대시보드</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      color: white;
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    .weeks {
+      display: grid;
+      gap: 30px;
+    }
+
+    .week-section {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .week-title {
+      color: #667eea;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #f0f0f0;
+    }
+
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .day-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .day-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .day-card.completed {
+      background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    }
+
+    .day-card.in-progress {
+      background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    }
+
+    .day-number {
+      font-size: 0.9em;
+      opacity: 0.9;
+      margin-bottom: 5px;
+    }
+
+    .day-title {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .day-topics {
+      font-size: 0.85em;
+      opacity: 0.9;
+      line-height: 1.4;
+    }
+
+    .progress-bar {
+      background: rgba(255,255,255,0.2);
+      height: 30px;
+      border-radius: 15px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, #4caf50, #45a049);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      transition: width 0.3s ease;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📚 JavaScript 학습 여정</h1>
+      <p class="subtitle">ko.javascript.info 30일 완주 챌린지</p>
+      
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressBar" style="width: 0%">0%</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-number" id="completedDays">0</div>
+          <div class="stat-label">완료한 날</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="totalDays">49</div>
+          <div class="stat-label">전체 일수</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="currentStreak">0</div>
+          <div class="stat-label">연속 학습</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="weeks">
+      <!-- Week 1 -->
+      <section class="week-section">
+        <h2 class="week-title">Week 1: 기초 다지기</h2>
+        <div class="days-grid">
+          <a href="#" class="day-card" onclick="openDay('day-01')">
+            <div class="day-number">Day 1</div>
+            <div class="day-title">JavaScript 기초</div>
+            <div class="day-topics">변수, 자료형, 연산자</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-02')">
+            <div class="day-number">Day 2</div>
+            <div class="day-title">코드 구조</div>
+            <div class="day-topics">Hello world, 엄격 모드</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-03')">
+            <div class="day-number">Day 3</div>
+            <div class="day-title">변수와 상수</div>
+            <div class="day-topics">let, const, 자료형</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-04')">
+            <div class="day-number">Day 4</div>
+            <div class="day-title">형 변환</div>
+            <div class="day-topics">형 변환, 연산자</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-05')">
+            <div class="day-number">Day 5</div>
+            <div class="day-title">조건문</div>
+            <div class="day-topics">alert, prompt, if/else</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-06')">
+            <div class="day-number">Day 6</div>
+            <div class="day-title">논리 연산</div>
+            <div class="day-topics">논리 연산자, 반복문</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-07')">
+            <div class="day-number">Day 7</div>
+            <div class="day-title">함수</div>
+            <div class="day-topics">함수 기본, 화살표 함수</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Week 2 -->
+      <section class="week-section">
+        <h2 class="week-title">Week 2: 객체 & 자료구조</h2>
+        <div class="days-grid">
+          <a href="#" class="day-card" onclick="openDay('day-08')">
+            <div class="day-number">Day 8</div>
+            <div class="day-title">객체 기본</div>
+            <div class="day-topics">객체, 참조 복사</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-09')">
+            <div class="day-number">Day 9</div>
+            <div class="day-title">메서드와 this</div>
+            <div class="day-topics">가비지 컬렉션, this</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-10')">
+            <div class="day-number">Day 10</div>
+            <div class="day-title">생성자 함수</div>
+            <div class="day-topics">new, 옵셔널 체이닝</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-11')">
+            <div class="day-number">Day 11</div>
+            <div class="day-title">심볼과 변환</div>
+            <div class="day-topics">Symbol, 형 변환</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-12')">
+            <div class="day-number">Day 12</div>
+            <div class="day-title">원시값과 숫자</div>
+            <div class="day-topics">원시값 메서드, 숫자형</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-13')">
+            <div class="day-number">Day 13</div>
+            <div class="day-title">문자열과 배열</div>
+            <div class="day-topics">String, Array 기본</div>
+          </a>
+          <a href="#" class="day-card" onclick="openDay('day-14')">
+            <div class="day-number">Day 14</div>
+            <div class="day-title">배열 메서드</div>
+            <div class="day-topics">배열 메서드, iterable</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 더 많은 주차는 동일한 패턴으로... -->
+      <section class="week-section">
+        <h2 class="week-title">Week 3-7: 계속 추가...</h2>
+        <p style="color: #666; text-align: center; padding: 20px;">
+          나머지 Day들도 같은 패턴으로 추가하세요!
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+  <script>
+    // 학습 진행 상황 관리
+    let completedDays = JSON.parse(localStorage.getItem('completedDays') || '[]');
+
+    function openDay(day) {
+      event.preventDefault();
+      
+      // Day 페이지로 이동하는 대신, main.js에서 해당 모듈을 import
+      console.log(`${day} 학습 시작!`);
+      
+      // 여기서는 간단히 alert로 대체
+      // 실제로는 src/main.js에서 import를 변경하면 됨
+      alert(`${day}를 학습하려면:\n\n1. src/main.js 열기\n2. import './chapters/${day}/index.js' 활성화\n3. 저장하고 개발자 도구 콘솔 확인!`);
+    }
+
+    // 완료 표시
+    document.querySelectorAll('.day-card').forEach(card => {
+      const dayNum = card.querySelector('.day-number').textContent;
+      if (completedDays.includes(dayNum)) {
+        card.classList.add('completed');
+      }
+    });
+
+    // 진행률 업데이트
+    function updateProgress() {
+      const completed = completedDays.length;
+      const total = document.querySelectorAll('.day-card').length;
+      const percentage = Math.round((completed / total) * 100);
+      
+      document.getElementById('progressBar').style.width = percentage + '%';
+      document.getElementById('progressBar').textContent = percentage + '%';
+      document.getElementById('completedDays').textContent = completed;
+    }
+
+    updateProgress();
+
+    console.log('📚 JavaScript 학습 대시보드에 오신 것을 환영합니다!');
+    console.log('💡 각 Day 카드를 클릭하여 학습을 시작하세요.');
+  </script>
+</body>
 </html>

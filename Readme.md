@@ -1,3 +1,275 @@
+# 🚀 JavaScript 학습 프로젝트 세팅 가이드
+
+## 📁 최종 폴더 구조
+
+```
+js-tutorial/
+├── README.md                   # 학습 계획서
+├── index.html                  # 대시보드 (루트)
+├── package.json
+├── vite.config.js             # (선택사항)
+└── src/
+    ├── main.js                # 메인 진입점
+    ├── style.css              # 전역 스타일
+    └── chapters/
+        ├── day-01/
+        │   ├── index.js       # Day 1 학습 코드
+        │   └── README.md      # (선택) Day 1 노트
+        ├── day-02/
+        │   └── index.js
+        ├── day-03/
+        │   └── index.js
+        └── ... (day-49까지)
+```
+
+---
+
+## 🛠️ 1단계: 프로젝트 생성
+
+### 터미널에서 실행:
+
+```bash
+# Vite 프로젝트 생성
+npm create vite@latest js-tutorial -- --template vanilla
+
+# 프로젝트 폴더로 이동
+cd js-tutorial
+
+# 의존성 설치
+npm install
+```
+
+---
+
+## 📝 2단계: 파일 생성 및 수정
+
+### 1) `index.html` (루트) - 대시보드
+
+루트에 있는 기본 `index.html`을 앞서 만든 대시보드 코드로 교체하세요.
+
+### 2) `src/main.js`
+
+앞서 만든 main.js 코드로 교체하세요.
+
+### 3) `src/style.css`
+
+앞서 만든 style.css 코드로 교체하세요.
+
+### 4) `README.md`
+
+루트에 학습 계획 README.md를 생성하세요.
+
+---
+
+## 📂 3단계: chapters 폴더 생성
+
+### 수동으로 폴더 만들기:
+
+```bash
+# src 폴더 안에 chapters 폴더 생성
+mkdir -p src/chapters/day-01
+mkdir -p src/chapters/day-02
+mkdir -p src/chapters/day-03
+# ... 필요한 만큼 생성
+```
+
+### 또는 스크립트로 한번에 생성:
+
+`create-days.js` 파일을 루트에 만들고:
+
+```javascript
+import fs from 'fs';
+import path from 'path';
+
+const TOTAL_DAYS = 49;
+
+for (let i = 1; i <= TOTAL_DAYS; i++) {
+  const dayNum = i.toString().padStart(2, '0');
+  const dayPath = path.join('src', 'chapters', `day-${dayNum}`);
+  
+  // 폴더 생성
+  if (!fs.existsSync(dayPath)) {
+    fs.mkdirSync(dayPath, { recursive: true });
+    console.log(`✓ Created ${dayPath}`);
+  }
+  
+  // index.js 파일 생성
+  const indexPath = path.join(dayPath, 'index.js');
+  if (!fs.existsSync(indexPath)) {
+    const template = `// ========================================
+// Day ${i}: 제목을 입력하세요
+// ========================================
+
+console.log('📚 Day ${i} 학습 시작!');
+console.log('='.repeat(50));
+
+// 여기에 학습 코드를 작성하세요!
+
+console.log('\\n✅ Day ${i} 학습 완료!');
+`;
+    fs.writeFileSync(indexPath, template);
+    console.log(`✓ Created ${indexPath}`);
+  }
+}
+
+console.log('\\n🎉 모든 Day 폴더가 생성되었습니다!');
+```
+
+실행:
+```bash
+node create-days.js
+```
+
+---
+
+## 🚀 4단계: 개발 서버 실행
+
+```bash
+npm run dev
+```
+
+브라우저에서 `http://localhost:5173` 열기
+
+---
+
+## 📖 5단계: 학습 시작!
+
+### 일일 학습 루틴:
+
+1. **`src/main.js` 열기**
+2. **오늘 학습할 Day의 import 주석 해제**
+   ```javascript
+   // 어제 것은 주석 처리
+   // import './chapters/day-01/index.js'
+   
+   // 오늘 것만 활성화
+   import './chapters/day-02/index.js'
+   ```
+3. **저장 (Ctrl+S / Cmd+S)**
+4. **브라우저 자동 새로고침됨**
+5. **개발자 도구 Console 확인 (F12)**
+6. **`src/chapters/day-XX/index.js` 파일에서 학습 코드 작성**
+
+---
+
+## 🎯 학습 팁
+
+### 콘솔에서 사용할 수 있는 명령어:
+
+```javascript
+// 진행 상황 확인
+showMyProgress()
+
+// Day 완료 표시
+completeDay(1)
+
+// 진행 상황 리셋
+resetProgress()
+
+// 도움말
+help()
+```
+
+### 효율적인 학습 방법:
+
+1. **ko.javascript.info 웹사이트 열기**
+2. **해당 챕터 읽기 (30분)**
+3. **예제 코드를 `day-XX/index.js`에 직접 타이핑 (1.5시간)**
+4. **콘솔 결과 확인하며 실험하기**
+5. **완료 후 `completeDay(숫자)` 실행**
+
+---
+
+## 🔥 추가 기능 (선택사항)
+
+### Day별 노트 추가:
+
+각 Day 폴더에 `README.md` 파일을 만들어 학습 내용 정리:
+
+```markdown
+# Day 1: JavaScript 기초
+
+## 배운 내용
+- let과 const의 차이
+- 8가지 자료형
+- 템플릿 리터럴
+
+## 핵심 요약
+...
+
+## 어려웠던 점
+...
+
+## 실습 코드
+\`\`\`javascript
+// 여기에 코드
+\`\`\`
+```
+
+---
+
+## 🐛 트러블슈팅
+
+### 문제 1: import 오류
+```
+Failed to resolve module
+```
+**해결**: 파일 경로가 정확한지 확인하세요. `src/chapters/day-01/index.js`
+
+### 문제 2: 화면에 아무것도 안 보임
+**해결**: 
+1. `npm run dev` 실행 중인지 확인
+2. 브라우저 콘솔(F12)을 확인하세요
+3. `index.html`이 루트에 있는지 확인
+
+### 문제 3: Hot reload가 안 됨
+**해결**: 
+1. 파일 저장했는지 확인 (Ctrl+S)
+2. Vite 서버 재시작: `npm run dev` 종료 후 다시 실행
+
+---
+
+## 📦 package.json 예시
+
+```json
+{
+  "name": "js-tutorial",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.8"
+  }
+}
+```
+
+---
+
+## 🎓 학습 완료 후
+
+30일 완주 후에는:
+
+1. **포트폴리오 프로젝트 만들기**
+   - 배운 내용을 활용한 실전 프로젝트
+   - 예: Todo 앱, 계산기, 미니 게임 등
+
+2. **코드 정리 및 문서화**
+   - 각 Day별로 정리한 README 검토
+   - 블로그 포스팅
+
+3. **다음 단계 학습**
+   - React, Vue 등 프레임워크
+   - TypeScript
+   - Node.js
+
+---
+
+
 # 모던 JavaScript 튜토리얼 학습 계획
 
 > 📚 학습 자료: [ko.javascript.info](https://ko.javascript.info/)  
@@ -231,83 +503,3 @@
 
 ### Day 48-49 (토-일) - 8시간
 - **전체 복습 및 정리**
-
----
-
-## ✅ 매일 체크리스트
-
-- [ ] 오늘 챕터 읽기 완료
-- [ ] 모든 예제 직접 타이핑해보기
-- [ ] 챕터 끝 문제 풀어보기
-- [ ] `chapters/day-XX/` 폴더에 코드 정리
-
----
-
-## 💡 학습 팁
-
-### 효율적인 학습 방법
-- **빠르게 읽되 예제는 반드시 손으로** - 읽기만 하면 금방 까먹습니다
-- **이해 안 가는 부분은 표시만 하고 넘어가기** - 나중에 다시 보면 이해됩니다
-- **주말에 주중 내용 빠르게 복습** - 한 번 더 보면 확실히 잡힙니다
-
-### 코드 작성 팁
-- `console.log()`를 적극 활용하여 값 확인하기
-- 브라우저 개발자 도구(F12) Console 탭 활용하기
-- Vite의 HMR(Hot Module Replacement)로 빠른 피드백 받기
-
----
-
-## 📁 권장 폴더 구조
-
-```
-js-tutorial/
-├── README.md (이 파일)
-├── index.html
-├── main.js
-├── style.css
-└── chapters/
-    ├── day-01/
-    │   ├── index.html
-    │   └── script.js
-    ├── day-02/
-    │   ├── index.html
-    │   └── script.js
-    └── ...
-```
-
----
-
-## 🚀 시작하기
-
-```bash
-# 프로젝트 생성
-npm create vite@latest js-tutorial -- --template vanilla
-
-# 의존성 설치
-cd js-tutorial
-npm install
-
-# 개발 서버 실행
-npm run dev
-```
-
-서버 실행 후 `http://localhost:5173` 에서 확인할 수 있습니다.
-
----
-
-## 📊 진행 상황
-
-- [ ] Week 1: 기초 (Day 1-7)
-- [ ] Week 2: 객체 & 자료구조 (Day 8-14)
-- [ ] Week 3: 고급 함수 & 프로토타입 (Day 15-21)
-- [ ] Week 4: 프로토타입 & 클래스 (Day 22-28)
-- [ ] Week 5: 비동기 & 제너레이터 (Day 29-35)
-- [ ] Week 6: 브라우저 - DOM (Day 36-42)
-- [ ] Week 7: 이벤트 완성 (Day 43-49)
-
----
-
-**시작일**: YYYY-MM-DD  
-**목표 완료일**: YYYY-MM-DD
-
-화이팅! 🔥
