@@ -276,43 +276,48 @@
 
   <script type="module" src="/src/main.js"></script>
   <script>
-    // 학습 진행 상황 관리
-    let completedDays = JSON.parse(localStorage.getItem('completedDays') || '[]');
+    // F5 눌렀을 때 localStorage에서 현재 Day 불러오기
+    function loadProgress() {
+      // localStorage에서 현재 Day 가져오기 (누적이 아닌 현재값)
+      const currentDay = parseInt(localStorage.getItem('js-current-day') || '0');
+      
+      const total = 49; // 전체 Day 수
+      const percentage = currentDay > 0 ? Math.round((currentDay / total) * 100) : 0;
+      
+      // 진행 바 업데이트
+      document.getElementById('progressBar').style.width = percentage + '%';
+      document.getElementById('progressBar').textContent = percentage + '%';
+      
+      // 완료한 날 숫자 업데이트
+      document.getElementById('completedDays').textContent = currentDay;
+      
+      // 현재 Day까지 카드 색상 변경 (초록색)
+      document.querySelectorAll('.day-card').forEach(card => {
+        const dayText = card.querySelector('.day-number').textContent; // "Day 1"
+        const dayNum = parseInt(dayText.replace('Day ', '')); // 1
+        
+        if (dayNum <= currentDay) {
+          card.classList.add('completed');
+        } else {
+          card.classList.remove('completed');
+        }
+      });
+      
+      console.log('✅ 대시보드 로드 완료');
+      console.log(`📊 현재 진행: Day ${currentDay}`);
+      console.log(`📈 진행률: ${currentDay}/${total} (${percentage}%)`);
+    }
 
     function openDay(day) {
       event.preventDefault();
-      
-      // Day 페이지로 이동하는 대신, main.js에서 해당 모듈을 import
-      console.log(`${day} 학습 시작!`);
-      
-      // 여기서는 간단히 alert로 대체
-      // 실제로는 src/main.js에서 import를 변경하면 됨
-      alert(`${day}를 학습하려면:\n\n1. src/main.js 열기\n2. import './chapters/${day}/index.js' 활성화\n3. 저장하고 개발자 도구 콘솔 확인!`);
+      alert(`${day}를 학습하려면:\n\n1. src/main.js 열기\n2. import './chapters/${day}/index.js' 활성화\n3. 저장 후 Console 확인!`);
     }
 
-    // 완료 표시
-    document.querySelectorAll('.day-card').forEach(card => {
-      const dayNum = card.querySelector('.day-number').textContent;
-      if (completedDays.includes(dayNum)) {
-        card.classList.add('completed');
-      }
-    });
+    // 페이지 로드 시 진행률 표시
+    loadProgress();
 
-    // 진행률 업데이트
-    function updateProgress() {
-      const completed = completedDays.length;
-      const total = document.querySelectorAll('.day-card').length;
-      const percentage = Math.round((completed / total) * 100);
-      
-      document.getElementById('progressBar').style.width = percentage + '%';
-      document.getElementById('progressBar').textContent = percentage + '%';
-      document.getElementById('completedDays').textContent = completed;
-    }
-
-    updateProgress();
-
-    console.log('📚 JavaScript 학습 대시보드에 오신 것을 환영합니다!');
-    console.log('💡 각 Day 카드를 클릭하여 학습을 시작하세요.');
+    console.log('📚 JavaScript 학습 대시보드');
+    console.log('💡 main.js에서 Day를 변경하고 F5를 눌러 진행률을 확인하세요!');
   </script>
 </body>
 </html>
