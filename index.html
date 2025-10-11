@@ -19,7 +19,7 @@
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
@@ -62,7 +62,7 @@
 
     .days-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 15px;
       margin-top: 20px;
     }
@@ -75,6 +75,7 @@
       text-decoration: none;
       transition: transform 0.2s, box-shadow 0.2s;
       cursor: pointer;
+      border: none;
     }
 
     .day-card:hover {
@@ -84,10 +85,6 @@
 
     .day-card.completed {
       background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
-    }
-
-    .day-card.in-progress {
-      background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
     }
 
     .day-number {
@@ -157,7 +154,7 @@
   <div class="container">
     <header>
       <h1>📚 JavaScript 학습 여정</h1>
-      <p class="subtitle">ko.javascript.info 30일 완주 챌린지</p>
+      <p class="subtitle">ko.javascript.info 49일 완주 챌린지</p>
       
       <div class="progress-bar">
         <div class="progress-fill" id="progressBar" style="width: 0%">0%</div>
@@ -180,121 +177,316 @@
     </header>
 
     <div class="weeks">
-      <!-- Week 1 -->
+      <!-- Week 1: 자바스크립트 기본 -->
       <section class="week-section">
-        <h2 class="week-title">Week 1: 기초 다지기</h2>
+        <h2 class="week-title">Week 1: 자바스크립트 기본</h2>
         <div class="days-grid">
-          <a href="#" class="day-card" onclick="openDay('day-01')">
+          <button class="day-card" onclick="openDay(1)">
             <div class="day-number">Day 1</div>
-            <div class="day-title">Hello, world!</div>
-            <div class="day-topics">코드 구조, 엄격 모드, 변수와 상수, 자료형</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-02')">
+            <div class="day-title">시작하기</div>
+            <div class="day-topics">소개, Hello world, 코드 구조, 엄격 모드</div>
+          </button>
+          <button class="day-card" onclick="openDay(2)">
             <div class="day-number">Day 2</div>
-            <div class="day-title">브라우저 환경</div>
-            <div class="day-topics">alert, prompt, confirm을 이용한 상호작용</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-03')">
+            <div class="day-title">변수와 자료형</div>
+            <div class="day-topics">변수, 상수, 자료형, typeof</div>
+          </button>
+          <button class="day-card" onclick="openDay(3)">
             <div class="day-number">Day 3</div>
-            <div class="day-title">형 변환</div>
-            <div class="day-topics">형 변환</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-04')">
+            <div class="day-title">상호작용과 형변환</div>
+            <div class="day-topics">alert/prompt/confirm, 형 변환</div>
+          </button>
+          <button class="day-card" onclick="openDay(4)">
             <div class="day-number">Day 4</div>
             <div class="day-title">연산자</div>
-            <div class="day-topics">기본 연산자와 수학</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-05')">
+            <div class="day-topics">기본 연산자, 비교 연산자</div>
+          </button>
+          <button class="day-card" onclick="openDay(5)">
             <div class="day-number">Day 5</div>
-            <div class="day-title">조건문</div>
-            <div class="day-topics">alert, prompt, if/else</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-06')">
+            <div class="day-title">조건문과 논리 연산</div>
+            <div class="day-topics">if/else, 논리 연산자, nullish 병합</div>
+          </button>
+          <button class="day-card" onclick="openDay(6)">
             <div class="day-number">Day 6</div>
-            <div class="day-title">논리 연산</div>
-            <div class="day-topics">논리 연산자, 반복문</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-07')">
+            <div class="day-title">반복문</div>
+            <div class="day-topics">while, for, switch문</div>
+          </button>
+          <button class="day-card" onclick="openDay(7)">
             <div class="day-number">Day 7</div>
-            <div class="day-title">함수</div>
-            <div class="day-topics">함수 기본, 화살표 함수</div>
-          </a>
+            <div class="day-title">함수 기본</div>
+            <div class="day-topics">함수 선언, 함수 표현식, 화살표 함수</div>
+          </button>
         </div>
       </section>
 
-      <!-- Week 2 -->
+      <!-- Week 2: 객체 기본 -->
       <section class="week-section">
-        <h2 class="week-title">Week 2: 객체 & 자료구조</h2>
+        <h2 class="week-title">Week 2: 객체 기본</h2>
         <div class="days-grid">
-          <a href="#" class="day-card" onclick="openDay('day-08')">
+          <button class="day-card" onclick="openDay(8)">
             <div class="day-number">Day 8</div>
-            <div class="day-title">객체 기본</div>
-            <div class="day-topics">객체, 참조 복사</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-09')">
+            <div class="day-title">객체</div>
+            <div class="day-topics">객체 기본, 참조에 의한 복사</div>
+          </button>
+          <button class="day-card" onclick="openDay(9)">
             <div class="day-number">Day 9</div>
-            <div class="day-title">메서드와 this</div>
-            <div class="day-topics">가비지 컬렉션, this</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-10')">
+            <div class="day-title">가비지 컬렉션</div>
+            <div class="day-topics">메모리 관리, 가비지 컬렉션</div>
+          </button>
+          <button class="day-card" onclick="openDay(10)">
             <div class="day-number">Day 10</div>
-            <div class="day-title">생성자 함수</div>
-            <div class="day-topics">new, 옵셔널 체이닝</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-11')">
+            <div class="day-title">메서드와 this</div>
+            <div class="day-topics">메서드, this, 체이닝</div>
+          </button>
+          <button class="day-card" onclick="openDay(11)">
             <div class="day-number">Day 11</div>
-            <div class="day-title">심볼과 변환</div>
-            <div class="day-topics">Symbol, 형 변환</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-12')">
+            <div class="day-title">생성자와 옵셔널 체이닝</div>
+            <div class="day-topics">new 연산자, 옵셔널 체이닝</div>
+          </button>
+          <button class="day-card" onclick="openDay(12)">
             <div class="day-number">Day 12</div>
-            <div class="day-title">원시값과 숫자</div>
-            <div class="day-topics">원시값 메서드, 숫자형</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-13')">
+            <div class="day-title">심볼과 형 변환</div>
+            <div class="day-topics">Symbol, 객체를 원시형으로 변환</div>
+          </button>
+          <button class="day-card" onclick="openDay(13)">
             <div class="day-number">Day 13</div>
-            <div class="day-title">문자열과 배열</div>
-            <div class="day-topics">String, Array 기본</div>
-          </a>
-          <a href="#" class="day-card" onclick="openDay('day-14')">
+            <div class="day-title">원시값 메서드</div>
+            <div class="day-topics">원시값 메서드, 숫자형</div>
+          </button>
+          <button class="day-card" onclick="openDay(14)">
             <div class="day-number">Day 14</div>
-            <div class="day-title">배열 메서드</div>
-            <div class="day-topics">배열 메서드, iterable</div>
-          </a>
+            <div class="day-title">문자열</div>
+            <div class="day-topics">문자열 메서드</div>
+          </button>
         </div>
       </section>
 
-      <!-- 더 많은 주차는 동일한 패턴으로... -->
+      <!-- Week 3: 자료구조 -->
       <section class="week-section">
-        <h2 class="week-title">Week 3-7: 계속 추가...</h2>
-        <p style="color: #666; text-align: center; padding: 20px;">
-          나머지 Day들도 같은 패턴으로 추가하세요!
-        </p>
+        <h2 class="week-title">Week 3: 자료구조와 Date</h2>
+        <div class="days-grid">
+          <button class="day-card" onclick="openDay(15)">
+            <div class="day-number">Day 15</div>
+            <div class="day-title">배열 기본</div>
+            <div class="day-topics">배열, 배열 메서드 기초</div>
+          </button>
+          <button class="day-card" onclick="openDay(16)">
+            <div class="day-number">Day 16</div>
+            <div class="day-title">배열 메서드</div>
+            <div class="day-topics">map, filter, reduce 등</div>
+          </button>
+          <button class="day-card" onclick="openDay(17)">
+            <div class="day-number">Day 17</div>
+            <div class="day-title">iterable 객체</div>
+            <div class="day-topics">iterable, Map, Set</div>
+          </button>
+          <button class="day-card" onclick="openDay(18)">
+            <div class="day-number">Day 18</div>
+            <div class="day-title">WeakMap과 WeakSet</div>
+            <div class="day-topics">WeakMap, WeakSet</div>
+          </button>
+          <button class="day-card" onclick="openDay(19)">
+            <div class="day-number">Day 19</div>
+            <div class="day-title">Object 메서드</div>
+            <div class="day-topics">Object.keys/values/entries</div>
+          </button>
+          <button class="day-card" onclick="openDay(20)">
+            <div class="day-number">Day 20</div>
+            <div class="day-title">구조 분해 할당</div>
+            <div class="day-topics">배열/객체 구조 분해</div>
+          </button>
+          <button class="day-card" onclick="openDay(21)">
+            <div class="day-number">Day 21</div>
+            <div class="day-title">Date와 JSON</div>
+            <div class="day-topics">Date 객체, JSON 메서드</div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Week 4: 함수 심화 -->
+      <section class="week-section">
+        <h2 class="week-title">Week 4: 함수 심화</h2>
+        <div class="days-grid">
+          <button class="day-card" onclick="openDay(22)">
+            <div class="day-number">Day 22</div>
+            <div class="day-title">재귀와 스택</div>
+            <div class="day-topics">재귀, 실행 컨텍스트</div>
+          </button>
+          <button class="day-card" onclick="openDay(23)">
+            <div class="day-number">Day 23</div>
+            <div class="day-title">나머지 매개변수</div>
+            <div class="day-topics">rest, spread 문법</div>
+          </button>
+          <button class="day-card" onclick="openDay(24)">
+            <div class="day-number">Day 24</div>
+            <div class="day-title">변수 스코프</div>
+            <div class="day-topics">클로저, 렉시컬 환경</div>
+          </button>
+          <button class="day-card" onclick="openDay(25)">
+            <div class="day-number">Day 25</div>
+            <div class="day-title">var와 전역 객체</div>
+            <div class="day-topics">var, 전역 객체</div>
+          </button>
+          <button class="day-card" onclick="openDay(26)">
+            <div class="day-number">Day 26</div>
+            <div class="day-title">함수 객체</div>
+            <div class="day-topics">NFE, new Function</div>
+          </button>
+          <button class="day-card" onclick="openDay(27)">
+            <div class="day-number">Day 27</div>
+            <div class="day-title">스케줄링</div>
+            <div class="day-topics">setTimeout, setInterval</div>
+          </button>
+          <button class="day-card" onclick="openDay(28)">
+            <div class="day-number">Day 28</div>
+            <div class="day-title">call/apply/bind</div>
+            <div class="day-topics">데코레이터, 함수 바인딩</div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Week 5: 프로토타입과 클래스 -->
+      <section class="week-section">
+        <h2 class="week-title">Week 5: 프로토타입과 클래스</h2>
+        <div class="days-grid">
+          <button class="day-card" onclick="openDay(29)">
+            <div class="day-number">Day 29</div>
+            <div class="day-title">프로토타입 상속</div>
+            <div class="day-topics">프로토타입 체이닝</div>
+          </button>
+          <button class="day-card" onclick="openDay(30)">
+            <div class="day-number">Day 30</div>
+            <div class="day-title">프로토타입 심화</div>
+            <div class="day-topics">F.prototype, 네이티브 프로토타입</div>
+          </button>
+          <button class="day-card" onclick="openDay(31)">
+            <div class="day-number">Day 31</div>
+            <div class="day-title">프로토타입 메서드</div>
+            <div class="day-topics">프로토타입 메서드</div>
+          </button>
+          <button class="day-card" onclick="openDay(32)">
+            <div class="day-number">Day 32</div>
+            <div class="day-title">클래스 기본</div>
+            <div class="day-topics">class 문법</div>
+          </button>
+          <button class="day-card" onclick="openDay(33)">
+            <div class="day-number">Day 33</div>
+            <div class="day-title">클래스 상속</div>
+            <div class="day-topics">extends, super</div>
+          </button>
+          <button class="day-card" onclick="openDay(34)">
+            <div class="day-number">Day 34</div>
+            <div class="day-title">정적 프로퍼티</div>
+            <div class="day-topics">static, private/protected</div>
+          </button>
+          <button class="day-card" onclick="openDay(35)">
+            <div class="day-number">Day 35</div>
+            <div class="day-title">클래스 확장</div>
+            <div class="day-topics">instanceof, 믹스인</div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Week 6: 에러와 비동기 -->
+      <section class="week-section">
+        <h2 class="week-title">Week 6: 에러 핸들링과 비동기</h2>
+        <div class="days-grid">
+          <button class="day-card" onclick="openDay(36)">
+            <div class="day-number">Day 36</div>
+            <div class="day-title">에러 핸들링</div>
+            <div class="day-topics">try-catch, 커스텀 에러</div>
+          </button>
+          <button class="day-card" onclick="openDay(37)">
+            <div class="day-number">Day 37</div>
+            <div class="day-title">콜백과 프라미스</div>
+            <div class="day-topics">콜백, Promise 기본</div>
+          </button>
+          <button class="day-card" onclick="openDay(38)">
+            <div class="day-number">Day 38</div>
+            <div class="day-title">프라미스 체이닝</div>
+            <div class="day-topics">then, catch, finally</div>
+          </button>
+          <button class="day-card" onclick="openDay(39)">
+            <div class="day-number">Day 39</div>
+            <div class="day-title">프라미스 API</div>
+            <div class="day-topics">Promise.all/race/allSettled</div>
+          </button>
+          <button class="day-card" onclick="openDay(40)">
+            <div class="day-number">Day 40</div>
+            <div class="day-title">async/await</div>
+            <div class="day-topics">async 함수, await</div>
+          </button>
+          <button class="day-card" onclick="openDay(41)">
+            <div class="day-number">Day 41</div>
+            <div class="day-title">제너레이터</div>
+            <div class="day-topics">function*, yield</div>
+          </button>
+          <button class="day-card" onclick="openDay(42)">
+            <div class="day-number">Day 42</div>
+            <div class="day-title">async 이터레이터</div>
+            <div class="day-topics">async 제너레이터, for await</div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Week 7: 브라우저 - DOM -->
+      <section class="week-section">
+        <h2 class="week-title">Week 7: 브라우저와 DOM</h2>
+        <div class="days-grid">
+          <button class="day-card" onclick="openDay(43)">
+            <div class="day-number">Day 43</div>
+            <div class="day-title">브라우저 환경과 DOM</div>
+            <div class="day-topics">브라우저 환경, DOM 트리</div>
+          </button>
+          <button class="day-card" onclick="openDay(44)">
+            <div class="day-number">Day 44</div>
+            <div class="day-title">DOM 탐색</div>
+            <div class="day-topics">DOM 탐색, querySelector</div>
+          </button>
+          <button class="day-card" onclick="openDay(45)">
+            <div class="day-number">Day 45</div>
+            <div class="day-title">노드 프로퍼티</div>
+            <div class="day-topics">노드 타입, 속성과 프로퍼티</div>
+          </button>
+          <button class="day-card" onclick="openDay(46)">
+            <div class="day-number">Day 46</div>
+            <div class="day-title">문서 수정</div>
+            <div class="day-topics">요소 생성, 삽입, 삭제</div>
+          </button>
+          <button class="day-card" onclick="openDay(47)">
+            <div class="day-number">Day 47</div>
+            <div class="day-title">스타일과 클래스</div>
+            <div class="day-topics">className, classList, style</div>
+          </button>
+          <button class="day-card" onclick="openDay(48)">
+            <div class="day-number">Day 48</div>
+            <div class="day-title">요소 사이즈와 스크롤</div>
+            <div class="day-topics">offsetWidth, scrollTop, 좌표</div>
+          </button>
+          <button class="day-card" onclick="openDay(49)">
+            <div class="day-number">Day 49</div>
+            <div class="day-title">이벤트 기본</div>
+            <div class="day-topics">이벤트 핸들러, 버블링, 캡처링</div>
+          </button>
+        </div>
       </section>
     </div>
   </div>
 
   <script type="module" src="/src/main.js"></script>
   <script>
-    // F5 눌렀을 때 localStorage에서 현재 Day 불러오기
     function loadProgress() {
-      // localStorage에서 현재 Day 가져오기 (누적이 아닌 현재값)
       const currentDay = parseInt(localStorage.getItem('js-current-day') || '0');
-      
-      const total = 49; // 전체 Day 수
+      const total = 49;
       const percentage = currentDay > 0 ? Math.round((currentDay / total) * 100) : 0;
       
-      // 진행 바 업데이트
       document.getElementById('progressBar').style.width = percentage + '%';
       document.getElementById('progressBar').textContent = percentage + '%';
-      
-      // 완료한 날 숫자 업데이트
       document.getElementById('completedDays').textContent = currentDay;
       
-      // 현재 Day까지 카드 색상 변경 (초록색)
       document.querySelectorAll('.day-card').forEach(card => {
-        const dayText = card.querySelector('.day-number').textContent; // "Day 1"
-        const dayNum = parseInt(dayText.replace('Day ', '')); // 1
+        const dayText = card.querySelector('.day-number').textContent;
+        const dayNum = parseInt(dayText.replace('Day ', ''));
         
         if (dayNum <= currentDay) {
           card.classList.add('completed');
@@ -302,15 +494,15 @@
           card.classList.remove('completed');
         }
       });
+      
       console.log(`📈 진행률: ${currentDay}/${total} (${percentage}%)`);
     }
 
-    function openDay(day) {
-      event.preventDefault();
-      alert(`${day}를 학습하려면:\n\n1. src/main.js 열기\n2. import './chapters/${day}/index.js' 활성화\n3. 저장 후 Console 확인!`);
+    function openDay(dayNum) {
+      const dayStr = dayNum.toString().padStart(2, '0');
+      alert(`Day ${dayNum}를 학습하려면:\n\n1. src/main.js 열기\n2. import './chapters/day-${dayStr}/index.js' 활성화\n3. 저장 후 Console 확인!`);
     }
 
-    // 페이지 로드 시 진행률 표시
     loadProgress();
   </script>
 </body>
