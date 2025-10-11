@@ -79,41 +79,11 @@ import './chapters/day-02/index.js'; window.__currentDay = 2;
 // window.__currentDay로 자동 설정됨
 const currentDay = window.__currentDay || null;
 
-console.log('🚀 JavaScript 학습 환경이 준비되었습니다!');
-console.log('📖 ko.javascript.info 30일 완주 챌린지');
-console.log('='.repeat(50));
-
 if (currentDay) {
-  console.log(`\n📚 현재 학습 중: Day ${currentDay}`);
-  
   // localStorage에 현재 Day만 저장 (누적 X)
   localStorage.setItem('js-current-day', currentDay);
   
-  console.log(`✅ 현재 진행: Day ${currentDay}`);
+  console.log(`✅ 코드 마지막 줄: 현재 Day ${currentDay}`);
 } else {
   console.warn('⚠️ Day를 자동으로 감지하지 못했습니다.');
 }
-
-// ========================================
-// 학습 팁 랜덤 표시
-// ========================================
-
-const tips = [
-  '💡 console.log()를 적극 활용하여 값을 확인하세요!',
-  '💡 이해가 안 되면 표시만 하고 넘어가세요. 나중에 다시 보면 이해됩니다.',
-  '💡 예제 코드를 직접 타이핑해보세요. 복붙은 NO!',
-  '💡 개발자 도구(F12)의 Console 탭을 활용하세요.',
-  '💡 에러 메시지를 두려워하지 마세요. 최고의 선생님입니다!',
-  '💡 코드를 조금씩 수정해보면서 어떻게 동작하는지 실험해보세요.',
-  '💡 하루에 너무 많이 하려고 하지 마세요. 꾸준함이 중요합니다!',
-  '💡 모르는 내용은 MDN 문서를 참고하세요.',
-  '💡 배운 내용을 블로그나 노트에 정리하면 더 오래 기억됩니다.',
-  '💡 주말에는 주중에 배운 내용을 복습하세요!'
-];
-
-const randomTip = tips[Math.floor(Math.random() * tips.length)];
-console.log(`\n${randomTip}\n`);
-
-console.log('🎯 학습 시작!');
-console.log('='.repeat(50));
-console.log('💬 대시보드 보려면: http://localhost:5173 에서 F5\n');
