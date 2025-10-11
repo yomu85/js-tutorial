@@ -11,9 +11,9 @@ import './style.css'
 
 // Week 1: 기초 다지기
 // import './chapters/day-01/index.js'; window.__currentDay = 1;
-import './chapters/day-02/index.js'; window.__currentDay = 2;
+// import './chapters/day-02/index.js'; window.__currentDay = 2;
 // import './chapters/day-03/index.js'; window.__currentDay = 3;
-// import './chapters/day-04/index.js'; window.__currentDay = 4;
+import './chapters/day-04/index.js'; window.__currentDay = 4;
 // import './chapters/day-05/index.js'; window.__currentDay = 5;
 // import './chapters/day-06/index.js'; window.__currentDay = 6;
 // import './chapters/day-07/index.js'; window.__currentDay = 7;
@@ -83,7 +83,7 @@ if (currentDay) {
   // localStorage에 현재 Day만 저장 (누적 X)
   localStorage.setItem('js-current-day', currentDay);
   
-  console.log(`✅ 코드 마지막 줄: 현재 Day ${currentDay}`);
+  console.log(`✅ The last line: 오늘도 화이팅! 현재 Day ${currentDay}`);
 } else {
   console.warn('⚠️ Day를 자동으로 감지하지 못했습니다.');
 }
