@@ -92,3 +92,31 @@ console.log("│ '' (빈 문자열)  │ 0        │ 빈값   │");
 console.log("│ ' ' (공백)      │ 0        │ 공백   │");
 console.log("│ '\\t\\n' (탭,줄)  │ 0        │ 공백   │");
 console.log("└───── ───┴──────────┴────────┘");
+
+let result = 5 > 4; // 비교 결과를 변수에 할당
+console.log( result ); // true
+
+console.log( 'Z' > 'A' ); // true
+console.log( 'Glow' > 'Glee' ); // true
+console.log( 'Bee' > 'Be' ); // true
+
+console.log( '2' > 1 ); // true, 문자열 '2'가 숫자 2로 변환된 후 비교가 진행됩니다.
+console.log( '01' == 1 ); // true, 문자열 '01'이 숫자 1로 변환된 후 비교가 진행됩니다.
+
+let aa = 0;
+console.log( Boolean(aa) ); // false
+
+let bb = "0";
+console.log( Boolean(bb) ); // true
+
+console.log(aa == bb); // true!
+
+console.log( 0 === false ); // false, 피연산자의 형이 다르기 때문입니다.
+
+console.log( 5 > 4 ); // true
+console.log( "apple" > "pineapple" ); // false
+console.log( "2" > "12" ); // true
+console.log( undefined == null ); // true
+console.log( undefined === null ); // false
+console.log( null == "\n0\n" ); // false null은 오로지 undefined와 비교할 때만 true가 됩니다.
+console.log( null === +"\n0\n" ); // false
