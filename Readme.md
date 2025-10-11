@@ -1,11 +1,17 @@
-# 🚀 JavaScript 학습 프로젝트 세팅 가이드
+# 🚀 JavaScript 학습 프로젝트 - 49일 완주 챌린지
 
-## 📁 최종 폴더 구조
+> 📚 학습 자료: [ko.javascript.info](https://ko.javascript.info/)  
+> ⚡ 학습 방식: 이론 + 실습 중심  
+> 🎯 목표: 49일간 체계적으로 JavaScript 마스터하기
+
+---
+
+## 📁 프로젝트 구조
 
 ```
 js-tutorial/
-├── README.md                   # 학습 계획서
-├── index.html                  # 대시보드 (루트)
+├── README.md                   # 이 파일
+├── index.html                  # 학습 대시보드 (메인)
 ├── package.json
 ├── vite.config.js             # (선택사항)
 └── src/
@@ -13,69 +19,34 @@ js-tutorial/
     ├── style.css              # 전역 스타일
     └── chapters/
         ├── day-01/
-        │   ├── index.js       # Day 1 학습 코드
-        │   └── README.md      # (선택) Day 1 노트
+        │   └── index.js       # Day 1 학습 코드
         ├── day-02/
-        │   └── index.js
-        ├── day-03/
         │   └── index.js
         └── ... (day-49까지)
 ```
 
 ---
 
-## 🛠️ 1단계: 프로젝트 생성
+## 🛠️ 빠른 시작
 
-### 터미널에서 실행:
+### 1단계: 프로젝트 생성
 
 ```bash
 # Vite 프로젝트 생성
-npm create vite@latest js-tutorial -- --template vanilla
+pnpm create vite@latest js-tutorial -- --template vanilla
 
 # 프로젝트 폴더로 이동
 cd js-tutorial
 
 # 의존성 설치
-npm install
+pnpm install
 ```
 
----
+### 2단계: 폴더 및 파일 생성
 
-## 📝 2단계: 파일 생성 및 수정
+#### 자동 생성 스크립트 (권장)
 
-### 1) `index.html` (루트) - 대시보드
-
-루트에 있는 기본 `index.html`을 앞서 만든 대시보드 코드로 교체하세요.
-
-### 2) `src/main.js`
-
-앞서 만든 main.js 코드로 교체하세요.
-
-### 3) `src/style.css`
-
-앞서 만든 style.css 코드로 교체하세요.
-
-### 4) `README.md`
-
-루트에 학습 계획 README.md를 생성하세요.
-
----
-
-## 📂 3단계: chapters 폴더 생성
-
-### 수동으로 폴더 만들기:
-
-```bash
-# src 폴더 안에 chapters 폴더 생성
-mkdir -p src/chapters/day-01
-mkdir -p src/chapters/day-02
-mkdir -p src/chapters/day-03
-# ... 필요한 만큼 생성
-```
-
-### 또는 스크립트로 한번에 생성:
-
-`create-days.js` 파일을 루트에 만들고:
+루트에 `create-days.js` 파일 생성:
 
 ```javascript
 import fs from 'fs';
@@ -115,95 +86,166 @@ console.log('\\n✅ Day ${i} 학습 완료!');
 console.log('\\n🎉 모든 Day 폴더가 생성되었습니다!');
 ```
 
-실행:
+### 3단계: 개발 서버 실행
+
 ```bash
-node create-days.js
+pnpm dev
 ```
+
+브라우저에서 `http://localhost:5173` 접속 🎉
 
 ---
 
-## 🚀 4단계: 개발 서버 실행
+## 📖 학습 방법
 
-```bash
-npm run dev
-```
+### 일일 학습 루틴 (2시간)
 
-브라우저에서 `http://localhost:5173` 열기
-
----
-
-## 📖 5단계: 학습 시작!
-
-### 일일 학습 루틴:
-
-1. **`src/main.js` 열기**
-2. **오늘 학습할 Day의 import 주석 해제**
+1. **ko.javascript.info 웹사이트에서 해당 챕터 읽기** (30분)
+2. **`src/main.js`에서 오늘 학습할 Day의 import 활성화**
    ```javascript
    // 어제 것은 주석 처리
-   // import './chapters/day-01/index.js'
+   // import './chapters/day-01/index.js'; window.__currentDay = 1;
    
    // 오늘 것만 활성화
-   import './chapters/day-02/index.js'
+   import './chapters/day-02/index.js'; window.__currentDay = 2;
    ```
-3. **저장 (Ctrl+S / Cmd+S)**
-4. **브라우저 자동 새로고침됨**
-5. **개발자 도구 Console 확인 (F12)**
-6. **`src/chapters/day-XX/index.js` 파일에서 학습 코드 작성**
+3. **파일 저장 (Ctrl+S / Cmd+S)** - 브라우저 자동 새로고침됨
+4. **개발자 도구 Console 확인 (F12)**
+5. **`src/chapters/day-XX/index.js`에서 학습 코드 직접 타이핑** (1.5시간)
+6. **결과 확인하며 실험하기**
+
+---
+
+## 📅 49일 커리큘럼 상세
+
+### 🗓️ Week 1: 자바스크립트 기본 (7일)
+
+| Day | 주제 | 내용 |
+|-----|------|------|
+| 1 | 시작하기 | 소개, Hello world, 코드 구조, 엄격 모드 |
+| 2 | 변수와 자료형 | 변수, 상수, 자료형, typeof |
+| 3 | 상호작용과 형변환 | alert/prompt/confirm, 형 변환 |
+| 4 | 연산자 | 기본 연산자, 비교 연산자 |
+| 5 | 조건문과 논리 연산 | if/else, 논리 연산자, nullish 병합 |
+| 6 | 반복문 | while, for, switch문 |
+| 7 | 함수 기본 | 함수 선언, 함수 표현식, 화살표 함수 |
+
+### 🗓️ Week 2: 객체 기본 (7일)
+
+| Day | 주제 | 내용 |
+|-----|------|------|
+| 8 | 객체 | 객체 기본, 참조에 의한 복사 |
+| 9 | 가비지 컬렉션 | 메모리 관리, 가비지 컬렉션 |
+| 10 | 메서드와 this | 메서드, this, 체이닝 |
+| 11 | 생성자와 옵셔널 체이닝 | new 연산자, 옵셔널 체이닝 |
+| 12 | 심볼과 형 변환 | Symbol, 객체를 원시형으로 변환 |
+| 13 | 원시값 메서드 | 원시값 메서드, 숫자형 |
+| 14 | 문자열 | 문자열 메서드 |
+
+### 🗓️ Week 3: 자료구조와 Date (7일)
+
+| Day | 주제 | 내용 |
+|-----|------|------|
+| 15 | 배열 기본 | 배열, 배열 메서드 기초 |
+| 16 | 배열 메서드 | map, filter, reduce 등 |
+| 17 | iterable 객체 | iterable, Map, Set |
+| 18 | WeakMap과 WeakSet | WeakMap, WeakSet |
+| 19 | Object 메서드 | Object.keys/values/entries |
+| 20 | 구조 분해 할당 | 배열/객체 구조 분해 |
+| 21 | Date와 JSON | Date 객체, JSON 메서드 |
+
+### 🗓️ Week 4: 함수 심화 (7일)
+
+| Day | 주제 | 내용 |
+|-----|------|------|
+| 22 | 재귀와 스택 | 재귀, 실행 컨텍스트 |
+| 23 | 나머지 매개변수 | rest, spread 문법 |
+| 24 | 변수 스코프 | 클로저, 렉시컬 환경 |
+| 25 | var와 전역 객체 | var, 전역 객체 |
+| 26 | 함수 객체 | NFE, new Function |
+| 27 | 스케줄링 | setTimeout, setInterval |
+| 28 | call/apply/bind | 데코레이터, 함수 바인딩 |
+
+### 🗓️ Week 5: 프로토타입과 클래스 (7일)
+
+| Day | 주제 | 내용 |
+|-----|------|------|
+| 29 | 프로토타입 상속 | 프로토타입 체이닝 |
+| 30 | 프로토타입 심화 | F.prototype, 네이티브 프로토타입 |
+| 31 | 프로토타입 메서드 | 프로토타입 메서드 |
+| 32 | 클래스 기본 | class 문법 |
+| 33 | 클래스 상속 | extends, super |
+| 34 | 정적 프로퍼티 | static, private/protected |
+| 35 | 클래스 확장 | instanceof, 믹스인 |
+
+### 🗓️ Week 6: 에러 핸들링과 비동기 (7일)
+
+| Day | 주제 | 내용 |
+|-----|------|------|
+| 36 | 에러 핸들링 | try-catch, 커스텀 에러 |
+| 37 | 콜백과 프라미스 | 콜백, Promise 기본 |
+| 38 | 프라미스 체이닝 | then, catch, finally |
+| 39 | 프라미스 API | Promise.all/race/allSettled |
+| 40 | async/await | async 함수, await |
+| 41 | 제너레이터 | function*, yield |
+| 42 | async 이터레이터 | async 제너레이터, for await |
+
+### 🗓️ Week 7: 브라우저와 DOM (7일)
+
+| Day | 주제 | 내용 |
+|-----|------|------|
+| 43 | 브라우저 환경과 DOM | 브라우저 환경, DOM 트리 |
+| 44 | DOM 탐색 | DOM 탐색, querySelector |
+| 45 | 노드 프로퍼티 | 노드 타입, 속성과 프로퍼티 |
+| 46 | 문서 수정 | 요소 생성, 삽입, 삭제 |
+| 47 | 스타일과 클래스 | className, classList, style |
+| 48 | 요소 사이즈와 스크롤 | offsetWidth, scrollTop, 좌표 |
+| 49 | 이벤트 기본 | 이벤트 핸들러, 버블링, 캡처링 |
 
 ---
 
 ## 🎯 학습 팁
 
-### 콘솔에서 사용할 수 있는 명령어:
+### ✨ 효과적인 학습 전략
 
-```javascript
-// 진행 상황 확인
-showMyProgress()
+1. **타이핑으로 배우기**: 예제 코드를 복사하지 말고 직접 타이핑하세요
+2. **실험하기**: 코드를 수정해보고 결과를 관찰하세요
+3. **주석 달기**: 이해한 내용을 한글로 주석으로 남기세요
+4. **복습하기**: 일주일에 한 번씩 이전 내용을 복습하세요
+5. **응용하기**: 배운 내용으로 작은 프로젝트를 만들어보세요
 
-// Day 완료 표시
-completeDay(1)
+### 📝 선택사항: Day별 노트 작성
 
-// 진행 상황 리셋
-resetProgress()
-
-// 도움말
-help()
-```
-
-### 효율적인 학습 방법:
-
-1. **ko.javascript.info 웹사이트 열기**
-2. **해당 챕터 읽기 (30분)**
-3. **예제 코드를 `day-XX/index.js`에 직접 타이핑 (1.5시간)**
-4. **콘솔 결과 확인하며 실험하기**
-5. **완료 후 `completeDay(숫자)` 실행**
-
----
-
-## 🔥 추가 기능 (선택사항)
-
-### Day별 노트 추가:
-
-각 Day 폴더에 `README.md` 파일을 만들어 학습 내용 정리:
+각 Day 폴더에 `README.md` 파일 생성:
 
 ```markdown
-# Day 1: JavaScript 기초
+# Day X: 제목
 
-## 배운 내용
-- let과 const의 차이
-- 8가지 자료형
-- 템플릿 리터럴
+## 🎯 학습 목표
+- 목표 1
+- 목표 2
 
-## 핵심 요약
-...
+## 📚 핵심 개념
+### 개념 1
+설명...
 
-## 어려웠던 점
-...
+### 개념 2
+설명...
 
-## 실습 코드
+## 💡 새로 배운 내용
+- 내용 1
+- 내용 2
+
+## 🤔 어려웠던 점
+- 어려웠던 점과 해결 방법
+
+## 💻 실습 코드
 \`\`\`javascript
-// 여기에 코드
+// 중요한 코드
 \`\`\`
+
+## 🔗 참고 자료
+- [ko.javascript.info 링크](https://ko.javascript.info/...)
 ```
 
 ---
@@ -214,18 +256,23 @@ help()
 ```
 Failed to resolve module
 ```
-**해결**: 파일 경로가 정확한지 확인하세요. `src/chapters/day-01/index.js`
+**해결**: 파일 경로가 정확한지 확인 (`src/chapters/day-01/index.js`)
 
 ### 문제 2: 화면에 아무것도 안 보임
 **해결**: 
-1. `npm run dev` 실행 중인지 확인
-2. 브라우저 콘솔(F12)을 확인하세요
+1. `pnpm dev` 실행 중인지 확인
+2. 브라우저 콘솔(F12) 확인
 3. `index.html`이 루트에 있는지 확인
 
 ### 문제 3: Hot reload가 안 됨
 **해결**: 
 1. 파일 저장했는지 확인 (Ctrl+S)
-2. Vite 서버 재시작: `npm run dev` 종료 후 다시 실행
+2. Vite 서버 재시작
+
+### 문제 4: localStorage가 초기화됨
+**해결**: 
+- 브라우저 시크릿 모드에서는 localStorage가 지워질 수 있습니다
+- 일반 모드에서 사용하세요
 
 ---
 
@@ -243,263 +290,97 @@ Failed to resolve module
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.0.8"
+    "vite": "^7.1.7"
   }
 }
 ```
 
 ---
 
-## 🎓 학습 완료 후
+## 🎓 학습 완료 후 다음 단계
 
-30일 완주 후에는:
+### 1. 복습 프로젝트 만들기
+배운 내용을 활용한 실전 프로젝트:
+- ✅ Todo 앱
+- 🧮 계산기
+- 🎮 미니 게임 (틱택토, 뱀 게임 등)
+- 📊 데이터 시각화 대시보드
+- 🌤️ 날씨 앱 (API 활용)
 
-1. **포트폴리오 프로젝트 만들기**
-   - 배운 내용을 활용한 실전 프로젝트
-   - 예: Todo 앱, 계산기, 미니 게임 등
+### 2. 고급 JavaScript 학습
+- TypeScript 배우기
+- JavaScript 디자인 패턴
+- 성능 최적화 기법
+- 테스트 코드 작성 (Jest, Vitest)
 
-2. **코드 정리 및 문서화**
-   - 각 Day별로 정리한 README 검토
-   - 블로그 포스팅
+### 3. 프레임워크/라이브러리 학습
+- React / Vue / Svelte
+- Node.js / Express
+- Next.js / Nuxt.js
 
-3. **다음 단계 학습**
-   - React, Vue 등 프레임워크
-   - TypeScript
-   - Node.js
-
----
-
-
-# 모던 JavaScript 튜토리얼 학습 계획
-
-> 📚 학습 자료: [ko.javascript.info](https://ko.javascript.info/)  
-> ⚡ 학습 방식: 속독 + 예제 중심  
-> 🎯 목표 기간: 30일
-
-## 📅 학습 시간
-
-- **주중**: 하루 2시간 (이론 30분 + 예제 코딩 1.5시간)
-- **주말**: 하루 4시간 (이론 1시간 + 예제 코딩 3시간)
+### 4. 포트폴리오 작성
+- GitHub에 학습 기록 공개
+- 블로그 포스팅
+- 프로젝트 README 작성
 
 ---
 
-## 🗓️ Week 1: 파트1 기초
+## 🌟 학습 동기 부여
 
-### Day 1 (월)
-- 소개 + 자바스크립트 기본
-- 변수, 자료형, 연산자
+### 완주 목표
+- ✅ **7일**: 첫 주 완료! JavaScript 기초 마스터
+- ✅ **14일**: 2주 완료! 객체 전문가
+- ✅ **21일**: 3주 완료! 자료구조 정복
+- ✅ **28일**: 4주 완료! 함수 마스터
+- ✅ **35일**: 5주 완료! OOP 전문가
+- ✅ **42일**: 6주 완료! 비동기 정복
+- ✅ **49일**: 🎉 전체 완주! JavaScript 마스터!
 
-### Day 2 (화)
-- Hello world
-- 코드 구조
-- 엄격 모드
-
-### Day 3 (수)
-- 변수와 상수
-- 자료형
-
-### Day 4 (목)
-- 형 변환
-- 연산자
-
-### Day 5 (금)
-- alert, prompt, confirm
-- 조건문
-
-### Day 6 (토) - 4시간
-- 논리 연산자
-- nullish 병합 연산자
-- 반복문
-- switch문
-
-### Day 7 (일) - 4시간
-- 함수 기본
-- 함수 표현식
-- 화살표 함수
+### 일일 체크리스트
+- [ ] 오늘의 챕터 읽기
+- [ ] 예제 코드 직접 타이핑
+- [ ] 콘솔에서 결과 확인
+- [ ] 코드 실험해보기
+- [ ] 학습 내용 정리
+- [ ] `completeDay()` 실행
 
 ---
 
-## 🗓️ Week 2: 객체 & 자료구조
+## 💬 커뮤니티
 
-### Day 8 (월)
-- 객체 기본
-- 참조에 의한 객체 복사
-
-### Day 9 (화)
-- 가비지 컬렉션
-- 메서드와 this
-
-### Day 10 (수)
-- new 연산자와 생성자 함수
-- 옵셔널 체이닝
-
-### Day 11 (목)
-- 심볼형
-- 객체를 원시형으로 변환하기
-
-### Day 12 (금)
-- 원시값의 메서드
-- 숫자형
-
-### Day 13 (토) - 4시간
-- 문자열
-- 배열
-
-### Day 14 (일) - 4시간
-- 배열 메서드
-- iterable 객체
+### 도움이 필요하신가요?
+- 📚 [ko.javascript.info](https://ko.javascript.info/) - 공식 튜토리얼
+- 💬 [Discord 생활코딩](https://discord.gg/SYmyEGP) - 한국 개발자 커뮤니티
+- 🐦 [트위터 #JavaScript](https://twitter.com/hashtag/JavaScript) - 최신 정보
+- 📖 [MDN Web Docs](https://developer.mozilla.org/ko/docs/Web/JavaScript) - 레퍼런스
 
 ---
 
-## 🗓️ Week 3: 고급 함수 & 프로토타입
+## 📜 라이선스
 
-### Day 15 (월)
-- Map과 Set
-- 위크맵과 위크셋
-
-### Day 16 (화)
-- Object.keys, values, entries
-- 구조 분해 할당
-
-### Day 17 (수)
-- Date 객체
-- JSON과 메서드
-
-### Day 18 (목)
-- 재귀와 스택
-- 나머지 매개변수와 스프레드 문법
-
-### Day 19 (금)
-- 변수의 유효범위와 클로저
-
-### Day 20 (토) - 4시간
-- 오래된 var
-- 전역 객체
-- 함수 객체와 NFE
-
-### Day 21 (일) - 4시간
-- new Function 문법
-- setTimeout과 setInterval
-- call/apply와 데코레이터
+MIT License - 자유롭게 사용하고 수정하세요!
 
 ---
 
-## 🗓️ Week 4: 프로토타입 & 클래스
+## 🙏 감사의 말
 
-### Day 22 (월)
-- 함수 바인딩
-- 프로토타입 상속
-
-### Day 23 (화)
-- 함수의 prototype 프로퍼티
-- 네이티브 프로토타입
-
-### Day 24 (수)
-- 프로토타입 메서드
-- 클래스 기본 문법
-
-### Day 25 (목)
-- 클래스 상속
-- 정적 메서드와 정적 프로퍼티
-
-### Day 26 (금)
-- private, protected 프로퍼티
-- instanceof로 클래스 확인하기
-
-### Day 27 (토) - 4시간
-- 믹스인
-- try-catch와 에러 핸들링
-- 커스텀 에러
-
-### Day 28 (일) - 4시간
-- 콜백
-- 프라미스
+이 프로젝트는 [ko.javascript.info](https://ko.javascript.info/)의 훌륭한 튜토리얼을 기반으로 만들어졌습니다.
+모든 콘텐츠 저작권은 원저자에게 있습니다.
 
 ---
 
-## 🗓️ Week 5: 비동기 & 제너레이터
-
-### Day 29 (월)
-- 프라미스 체이닝
-- 프라미스와 에러 핸들링
-
-### Day 30 (화)
-- 프라미스 API
-- 프라미스화
-
-### Day 31 (수)
-- async/await
-
-### Day 32 (목)
-- 제너레이터
-- async 이터레이터와 제너레이터
-
-### Day 33 (금)
-- 모듈 소개
-- 모듈 내보내기와 가져오기
-
-### Day 34 (토) - 4시간
-- 동적으로 모듈 가져오기
-- **파트1 총정리**
-
-### Day 35 (일) - 4시간
-- **파트1 복습**
+**화이팅! 🔥 49일 후에는 JavaScript 전문가가 되어 있을 거예요!**
 
 ---
 
-## 🗓️ Week 6: 브라우저 - DOM 기본
+## 📊 진행 상황 추적
 
-### Day 36 (월)
-- 브라우저 환경과 다양한 명세서
-- DOM 트리
+현재 진행률은 대시보드(`index.html`)에서 실시간으로 확인할 수 있습니다.
 
-### Day 37 (화)
-- DOM 탐색하기
-- getElement*, querySelector*로 요소 검색하기
+```
+진행률: [████████░░░░░░░░░░] 42%
+완료: 21/49일
+연속 학습: 7일
+```
 
-### Day 38 (수)
-- 노드 프로퍼티: type, tag, contents
-- 속성과 프로퍼티
-
-### Day 39 (목)
-- 문서 수정하기
-- 스타일과 클래스
-
-### Day 40 (금)
-- 요소 사이즈와 스크롤
-
-### Day 41 (토) - 4시간
-- Window 사이즈와 스크롤
-- 좌표
-- 이벤트 소개
-
-### Day 42 (일) - 4시간
-- 버블링과 캡처링
-- 이벤트 위임
-
----
-
-## 🗓️ Week 7: 이벤트 완성
-
-### Day 43 (월)
-- 브라우저 기본 동작
-- 커스텀 이벤트 디스패치
-
-### Day 44 (화)
-- 마우스 이벤트
-- 포인터 이벤트
-
-### Day 45 (수)
-- 키보드: keydown과 keyup
-- 스크롤
-
-### Day 46 (목)
-- 폼 프로퍼티와 메서드
-- 폼과 컨트롤 요소에 집중하기
-
-### Day 47 (금)
-- 페이지 로드 이벤트: DOMContentLoaded, load
-- 스크립트: async, defer
-
-### Day 48-49 (토-일) - 8시간
-- **전체 복습 및 정리**
+**매일 꾸준히 하는 것이 가장 중요합니다!** 🌱
