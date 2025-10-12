@@ -120,3 +120,5 @@ console.log( undefined == null ); // true
 console.log( undefined === null ); // false
 console.log( null == "\n0\n" ); // false null은 오로지 undefined와 비교할 때만 true가 됩니다.
 console.log( null === +"\n0\n" ); // false
+
+console.log( "1: ", " " < "" ); // false

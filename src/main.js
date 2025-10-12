@@ -13,8 +13,8 @@ import './style.css'
 // import './chapters/day-01/index.js'; window.__currentDay = 1;
 // import './chapters/day-02/index.js'; window.__currentDay = 2;
 // import './chapters/day-03/index.js'; window.__currentDay = 3;
-import './chapters/day-04/index.js'; window.__currentDay = 4;
-// import './chapters/day-05/index.js'; window.__currentDay = 5;
+// import './chapters/day-04/index.js'; window.__currentDay = 4;
+import './chapters/day-05/index.js'; window.__currentDay = 5;
 // import './chapters/day-06/index.js'; window.__currentDay = 6;
 // import './chapters/day-07/index.js'; window.__currentDay = 7;
 
