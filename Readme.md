@@ -27,9 +27,7 @@ js-tutorial/
 
 ---
 
-## 🛠️ 빠른 시작
-
-### 1단계: 프로젝트 생성
+## 🛠️ 프로젝트 생성 및 개발 서버 실행
 
 ```bash
 # Vite 프로젝트 생성
@@ -40,55 +38,8 @@ cd js-tutorial
 
 # 의존성 설치
 pnpm install
-```
 
-### 2단계: 폴더 및 파일 생성
-
-#### 자동 생성 스크립트 (권장)
-
-루트에 `create-days.js` 파일 생성:
-
-```javascript
-import fs from 'fs';
-import path from 'path';
-
-const TOTAL_DAYS = 49;
-
-for (let i = 1; i <= TOTAL_DAYS; i++) {
-  const dayNum = i.toString().padStart(2, '0');
-  const dayPath = path.join('src', 'chapters', `day-${dayNum}`);
-  
-  // 폴더 생성
-  if (!fs.existsSync(dayPath)) {
-    fs.mkdirSync(dayPath, { recursive: true });
-    console.log(`✓ Created ${dayPath}`);
-  }
-  
-  // index.js 파일 생성
-  const indexPath = path.join(dayPath, 'index.js');
-  if (!fs.existsSync(indexPath)) {
-    const template = `// ========================================
-// Day ${i}: 제목을 입력하세요
-// ========================================
-
-console.log('📚 Day ${i} 학습 시작!');
-console.log('='.repeat(50));
-
-// 여기에 학습 코드를 작성하세요!
-
-console.log('\\n✅ Day ${i} 학습 완료!');
-`;
-    fs.writeFileSync(indexPath, template);
-    console.log(`✓ Created ${indexPath}`);
-  }
-}
-
-console.log('\\n🎉 모든 Day 폴더가 생성되었습니다!');
-```
-
-### 3단계: 개발 서버 실행
-
-```bash
+# 개발 서버 실행
 pnpm dev
 ```
 
@@ -214,116 +165,10 @@ pnpm dev
 4. **복습하기**: 일주일에 한 번씩 이전 내용을 복습하세요
 5. **응용하기**: 배운 내용으로 작은 프로젝트를 만들어보세요
 
-### 📝 선택사항: Day별 노트 작성
-
-각 Day 폴더에 `README.md` 파일 생성:
-
-```markdown
-# Day X: 제목
-
-## 🎯 학습 목표
-- 목표 1
-- 목표 2
-
-## 📚 핵심 개념
-### 개념 1
-설명...
-
-### 개념 2
-설명...
-
-## 💡 새로 배운 내용
-- 내용 1
-- 내용 2
-
-## 🤔 어려웠던 점
-- 어려웠던 점과 해결 방법
-
-## 💻 실습 코드
-\`\`\`javascript
-// 중요한 코드
-\`\`\`
 
 ## 🔗 참고 자료
 - [ko.javascript.info 링크](https://ko.javascript.info/...)
 ```
-
----
-
-## 🐛 트러블슈팅
-
-### 문제 1: import 오류
-```
-Failed to resolve module
-```
-**해결**: 파일 경로가 정확한지 확인 (`src/chapters/day-01/index.js`)
-
-### 문제 2: 화면에 아무것도 안 보임
-**해결**: 
-1. `pnpm dev` 실행 중인지 확인
-2. 브라우저 콘솔(F12) 확인
-3. `index.html`이 루트에 있는지 확인
-
-### 문제 3: Hot reload가 안 됨
-**해결**: 
-1. 파일 저장했는지 확인 (Ctrl+S)
-2. Vite 서버 재시작
-
-### 문제 4: localStorage가 초기화됨
-**해결**: 
-- 브라우저 시크릿 모드에서는 localStorage가 지워질 수 있습니다
-- 일반 모드에서 사용하세요
-
----
-
-## 📦 package.json 예시
-
-```json
-{
-  "name": "js-tutorial",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^7.1.7"
-  }
-}
-```
-
----
-
-## 🎓 학습 완료 후 다음 단계
-
-### 1. 복습 프로젝트 만들기
-배운 내용을 활용한 실전 프로젝트:
-- ✅ Todo 앱
-- 🧮 계산기
-- 🎮 미니 게임 (틱택토, 뱀 게임 등)
-- 📊 데이터 시각화 대시보드
-- 🌤️ 날씨 앱 (API 활용)
-
-### 2. 고급 JavaScript 학습
-- TypeScript 배우기
-- JavaScript 디자인 패턴
-- 성능 최적화 기법
-- 테스트 코드 작성 (Jest, Vitest)
-
-### 3. 프레임워크/라이브러리 학습
-- React / Vue / Svelte
-- Node.js / Express
-- Next.js / Nuxt.js
-
-### 4. 포트폴리오 작성
-- GitHub에 학습 기록 공개
-- 블로그 포스팅
-- 프로젝트 README 작성
-
----
 
 ## 🌟 학습 동기 부여
 
@@ -343,22 +188,6 @@ Failed to resolve module
 - [ ] 코드 실험해보기
 - [ ] 학습 내용 정리
 - [ ] `completeDay()` 실행
-
----
-
-## 💬 커뮤니티
-
-### 도움이 필요하신가요?
-- 📚 [ko.javascript.info](https://ko.javascript.info/) - 공식 튜토리얼
-- 💬 [Discord 생활코딩](https://discord.gg/SYmyEGP) - 한국 개발자 커뮤니티
-- 🐦 [트위터 #JavaScript](https://twitter.com/hashtag/JavaScript) - 최신 정보
-- 📖 [MDN Web Docs](https://developer.mozilla.org/ko/docs/Web/JavaScript) - 레퍼런스
-
----
-
-## 📜 라이선스
-
-MIT License - 자유롭게 사용하고 수정하세요!
 
 ---
 

@@ -75,3 +75,5 @@ console.log( 1 && 5 ); // 5
 // AND는 첫 번째 피연산자를 반환하고, 두 번째 피연산자는 무시합니다.
 console.log( null && 5 ); // null
 console.log( 0 && "아무거나 와도 상관없습니다." ); // 0 
+
+console.log( 1 && 2 && null && 3 ); // null
