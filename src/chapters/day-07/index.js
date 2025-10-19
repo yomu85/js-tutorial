@@ -96,3 +96,127 @@ console.log('지시자 return은 함수 내 어디서든 사용할 수 있습니
 
 console.log("함수는 반환 값을 하나만 반환할 수 있습니다. 만약 여러 값을 반환해야 한다면 객체를 반환하거나 배열을 반환해야 합니다.");
 console.log("return;은 \"여기서 끝내고 undefined 반환하라\"는 의미입니다! ");
+
+// function checkAge(age) {
+//   if (age > 18) {
+//     return true;
+//   } else {
+//     return confirm('보호자의 동의를 받으셨나요?');
+//   }
+// }
+// checkAge(18);
+
+// function checkAge(age) {
+//   var result = age > 18 ? true : confirm ('보호자의 동의를 받으셨나요?')
+//   return console.log(result) 
+// }
+
+// function checkAge2(age) {
+//   var result = (age > 18) || confirm ('보호자의 동의를 받으셨나요?');
+//   return console.log(result)
+// }
+
+// checkAge(19);
+
+// function min(a,b) {
+//   return console.log(a < b ? a : b)
+// }
+
+// min(2, 5);
+// min(3, -1);
+// min(1, 1);
+
+// function pow(x, n) {
+//   let result = x;
+//   for (let i = 1; i < n; i++) {
+//     result *= x;
+//   }
+//   return result2
+// }
+
+// let x = prompt("x?", '');
+// let n = prompt("n?", '');
+
+// if (n < 1) {
+//   alert(`${n}은 양의 정수이어야 합니다.`);
+// } else {
+//   alert( pow(x, n) );
+// }
+
+// function sayHi() {   // (1) 함수 생성
+//   alert( "Hello" );
+// }
+
+// let func = sayHi;    // (2) 함수 복사
+
+// func(); // Hello     // (3) 복사한 함수를 실행(정상적으로 실행됩니다)!
+// sayHi(); // Hello    //     본래 함수도 정상적으로 실행됩니다.
+
+
+// 아롱이한테 저녁 머먹을거야?
+// function showEat() {
+//   return console.log("먹을게")
+// }
+
+// function showNotEat() {
+//   return console.log("안먹을게")
+// }
+
+// function ask(question, yes, no) {
+//   if(confirm(question)) {
+//     yes()
+//   } else {
+//     no()
+//   }
+// }
+
+// ask("저녁 먹을래?", showEat, showNotEat)
+
+// function ask(question, yes, no) {
+//   if (confirm(question)) {
+//     yes()
+//   } else {
+//     no()
+//   }
+// }
+
+// ask("저녁 먹을래?", function() { console.log("먹을게") }, function() { console.log("안먹을게") })
+
+// let age = prompt("나이를 알려주세요.", 18);
+
+// let welcome;
+
+// if (age < 18) {
+//   welcome = function() {
+//     alert("안녕!");
+//   }
+// } else {
+//   welcome = function() {
+//     alert("안녕하세요!");
+//   }
+// }
+
+// welcome();
+
+// let age = prompt("나이를 알려주세요.", 18);
+
+// let welcome = (age < 18) ?
+//   function() { alert("안녕!"); } :
+//   function() { alert("안녕하세요!"); };
+
+// welcome();
+
+// var ask =(question, yes, no) => {
+//   confirm(question) ? yes() : no()
+// }
+// ask("저녁 먹을래?", () => console.log("먹을게"), () => console.log("안먹을게"))
+
+// 자바스크립트는 여덟 가지 기본 자료형을 지원합니다.
+
+// 정수와 부동 소수점을 저장하는 데 쓰이는 숫자형
+// 아주 큰 숫자를 저장할 수 있는 BigInt형
+// 문자열을 저장하는 데 쓰이는 문자형
+// 논리값 true/false을 저장하는 데 쓰이는 불린형
+// ‘비어있음’, '존재하지 않음’을 나타내는 null 값만을 위한 독립 자료형 null
+// 값이 할당되지 않은 상태를 나타내는 undefined 값만을 위한 독립 자료형 undefined
+// 복잡한 자료구조를 저장하는 데 쓰이는 객체형과 고유한 식별자를 만들 때 사용되는 심볼형
