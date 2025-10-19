@@ -211,6 +211,7 @@ console.log("return;은 \"여기서 끝내고 undefined 반환하라\"는 의미
 // }
 // ask("저녁 먹을래?", () => console.log("먹을게"), () => console.log("안먹을게"))
 
+// 기본 정리 내용용
 // 자바스크립트는 여덟 가지 기본 자료형을 지원합니다.
 
 // 정수와 부동 소수점을 저장하는 데 쓰이는 숫자형
@@ -220,3 +221,9 @@ console.log("return;은 \"여기서 끝내고 undefined 반환하라\"는 의미
 // ‘비어있음’, '존재하지 않음’을 나타내는 null 값만을 위한 독립 자료형 null
 // 값이 할당되지 않은 상태를 나타내는 undefined 값만을 위한 독립 자료형 undefined
 // 복잡한 자료구조를 저장하는 데 쓰이는 객체형과 고유한 식별자를 만들 때 사용되는 심볼형
+
+console.log("??는 null/undefined만 falsy로 보고, ||는 0, '', false까지 모두 falsy로 봅니다!");
+console.log("동등 연산자 ==는 형이 다른 값끼리 비교할 때 피연산자의 자료형을 숫자형으로 바꾼 후 비교를 진행합니다. ");
+
+console.log( 0 == false ); // true
+console.log( 0 == '' ); // true
