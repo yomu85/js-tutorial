@@ -12,141 +12,194 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: #F9FAFB;
       min-height: 100vh;
-      padding: 40px 20px;
+      padding: 0;
     }
 
     .container {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     header {
-      text-align: center;
-      color: white;
-      margin-bottom: 50px;
+      /* background: linear-gradient(135deg, #3182F6 0%, #6366F1 100%); */
+      padding: 60px 24px 48px;
+      margin: 0 0 48px 0;
+      border-radius: 0 0 32px 32px;
     }
 
     h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
     }
 
     .subtitle {
-      font-size: 1.2em;
-      opacity: 0.9;
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+    }
+
+    .subtitle a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .progress-bar {
+      background: rgba(255, 255, 255, 0.2);
+      height: 12px;
+      border-radius: 100px;
+      overflow: hidden;
+      margin: 32px 0 24px;
+    }
+
+    .progress-fill {
+      background: #FFFFFF;
+      height: 100%;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .stats {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 0;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .stat-number {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.9375rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
     }
 
     .weeks {
       display: grid;
-      gap: 30px;
+      gap: 24px;
+      padding: 0 24px 60px;
     }
 
     .week-section {
       background: white;
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      border-radius: 20px;
+      padding: 32px;
+      border: 1px solid #E5E8EB;
     }
 
     .week-title {
-      color: #667eea;
-      font-size: 1.8em;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 3px solid #f0f0f0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #191F28;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
     }
 
     .days-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
     }
 
     .day-card {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
+      background: #F9FAFB;
+      color: #191F28;
       padding: 20px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      border-radius: 12px;
+      border: 1.5px solid #E5E8EB;
       cursor: pointer;
-      border: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      text-align: left;
+      width: 100%;
     }
 
     .day-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      background: #F2F4F6;
+      border-color: #3182F6;
+      transform: translateY(-2px);
+    }
+
+    .day-card:active {
+      transform: translateY(0);
     }
 
     .day-card.completed {
-      background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+      background: #EBF4FF;
+      border-color: #3182F6;
+    }
+
+    .day-card.completed .day-number {
+      color: #3182F6;
     }
 
     .day-number {
-      font-size: 0.9em;
-      opacity: 0.9;
-      margin-bottom: 5px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #8B95A1;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .day-title {
-      font-size: 1.1em;
-      font-weight: bold;
+      font-size: 1.125rem;
+      font-weight: 700;
       margin-bottom: 8px;
+      color: #191F28;
+      letter-spacing: -0.01em;
     }
 
     .day-topics {
-      font-size: 0.85em;
-      opacity: 0.9;
-      line-height: 1.4;
+      font-size: 0.875rem;
+      color: #6B7684;
+      line-height: 1.5;
+      font-weight: 500;
     }
 
-    .progress-bar {
-      background: rgba(255,255,255,0.2);
-      height: 30px;
-      border-radius: 15px;
-      overflow: hidden;
-      margin: 20px 0;
-    }
+    @media (max-width: 768px) {
+      header {
+        padding: 40px 16px 32px;
+        border-radius: 0 0 24px 24px;
+      }
 
-    .progress-fill {
-      background: linear-gradient(90deg, #4caf50, #45a049);
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      transition: width 0.3s ease;
-    }
+      h1 {
+        font-size: 2rem;
+      }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
+      .days-grid {
+        grid-template-columns: 1fr;
+      }
 
-    .stat-card {
-      background: rgba(255,255,255,0.1);
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-    }
+      .stats {
+        flex-direction: column;
+      }
 
-    .stat-number {
-      font-size: 2em;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
+      .week-section {
+        padding: 24px 20px;
+      }
 
-    .stat-label {
-      font-size: 0.9em;
-      opacity: 0.9;
+      .weeks {
+        padding: 0 16px 40px;
+      }
     }
   </style>
 </head>
@@ -154,10 +207,10 @@
   <div class="container">
     <header>
       <h1>📚 JavaScript 학습 여정</h1>
-      <p class="subtitle">ko.javascript.info 49일 완주 챌린지</p>
+      <p class="subtitle"><a href="https://ko.javascript.info/" target="_blank">ko.javascript.info</a> 49일 완주 챌린지</p>
       
       <div class="progress-bar">
-        <div class="progress-fill" id="progressBar" style="width: 0%">0%</div>
+        <div class="progress-fill" id="progressBar" style="width: 0%"></div>
       </div>
 
       <div class="stats">
@@ -477,7 +530,6 @@
       const percentage = currentDay > 0 ? Math.round((currentDay / total) * 100) : 0;
       
       document.getElementById('progressBar').style.width = percentage + '%';
-      document.getElementById('progressBar').textContent = percentage + '%';
       document.getElementById('completedDays').textContent = currentDay;
       
       document.querySelectorAll('.day-card').forEach(card => {
