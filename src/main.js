@@ -19,8 +19,8 @@ import './style.css'
 // import './chapters/day-07/index.js'; window.__currentDay = 7;
 
 // Week 2: 객체 & 자료구조
-import './chapters/day-08/index.js'; window.__currentDay = 8;
-// import './chapters/day-09/index.js'; window.__currentDay = 9;
+// import './chapters/day-08/index.js'; window.__currentDay = 8;
+import './chapters/day-09/index.js'; window.__currentDay = 9;
 // import './chapters/day-10/index.js'; window.__currentDay = 10;
 // import './chapters/day-11/index.js'; window.__currentDay = 11;
 // import './chapters/day-12/index.js'; window.__currentDay = 12;

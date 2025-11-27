@@ -192,3 +192,98 @@ function multiplyNumeric(obj) {
   return obj;
 }
 console.log(multiplyNumeric(menu));
+
+let user11 = { name: 'John' };
+
+let admin11 = user11;
+
+admin11.name = 'Pete'; // 'admin' 참조 값에 의해 변경됨
+
+console.log(user11.name); // 'Pete'가 출력됨. 'user' 참조 값을 이용해 변경사항을 확인함
+
+let a = {};
+let b = a; // 참조에 의한 복사
+
+console.log( a == b ); // true, 두 변수는 같은 객체를 참조합니다.
+console.log( a === b ); // true
+
+let aa = {};
+let bb = {}; // 독립된 두 객체
+
+console.log( aa == bb ); // false
+
+let user22 = {
+  name: "John",
+  age: 30
+};
+
+let clone22 = {}; // 새로운 빈 객체
+
+// 빈 객체에 user 프로퍼티 전부를 복사해 넣습니다.
+for (let key in user22) {
+  clone22[key] = user22[key];
+}
+
+clone22.name = "Pete"
+
+console.log(user22.name);
+
+let user33 = {
+  name: "John",
+  sizes: {
+    height: 182,
+    width: 50
+  }
+};
+
+let clone33 = {};
+for (let key in user33) {
+  clone33[key] = user33[key];
+}
+
+clone33.sizes.height = 200;
+console.log(user33.sizes.height);  // 200 - 중첩 객체는 참조가 복사됨!
+
+let user44 = {
+  name: "John",
+  sizes: {
+    height: 182,
+    width: 50
+  }
+};
+
+// 깊은 복사 방법 1: JSON 사용
+let deepClone = JSON.parse(JSON.stringify(user44));
+
+// 깊은 복사 방법 2: structuredClone (최신)
+let deepClone2 = structuredClone(user44);
+
+deepClone.sizes.height = 200;
+console.log(user44.sizes.height);  // 182 - 원본은 변경되지 않음
+
+let user10 = { name: "John"};
+
+let permissions1 = { canView: true }
+let permissions2 = { canEdit: true,  name: "pete" }
+
+// permissions1과, permissions2의 프로퍼티를 user로 복사합니다.
+Object.assign(user10, permissions1, permissions2);
+
+console.log(user10);
+
+let user66 = {
+  nmae: "John",
+  age: 30
+}
+
+let clone66 = Object.assign({}, user66)
+
+console.log(clone66);
+
+// 배열 복사에는 이렇게
+let arr22 = [1, 2, 3];
+let arrClone11 = Object.assign([], arr22);
+let arrClone22 = [...arr22];
+
+console.log(arrClone11);
+console.log(arrClone22);
