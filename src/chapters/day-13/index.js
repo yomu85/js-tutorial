@@ -142,3 +142,29 @@ console.log(typeof 123e6);
 // num.toString(base)는 숫자를 base진수로 바꾸고, 이를 문자열 형태로 반환합니다.
 
 // 과제 1
+class twoNumbers {
+  constructor() {
+    this.firstNum = +prompt('첫번째 값:')
+    this.secondNum = +prompt('두번째 값:')
+  }
+  sum() {
+    return this.firstNum + this.secondNum
+  }
+}
+
+// const twoNum = new twoNumbers();
+// console.log(twoNum.sum());
+
+// 과제 2
+console.log((1.35).toFixed(1));
+console.log((1.35).toPrecision(20));
+console.log((6.35).toFixed(1));
+console.log(6.35.toPrecision(20)); 
+
+// toFixed 안 씀! 정수 연산만
+function roundPrice(price, decimals = 2) {
+  const factor = 10 ** decimals;
+  return Math.round(price * factor) / factor;
+}
+
+console.log('roundPrice(6.35, 1):', roundPrice(6.35, 1));
