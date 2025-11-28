@@ -103,17 +103,52 @@ console.log(user20.ref().name);
 
 // 계산기 만들기 과제
 let calculator = {
+  firstNum: 0,
+  secondNum: 0,
   read() {
-
+    this.firstNum = +prompt("첫 번째 값:");
+    this.secondNum = +prompt("두 번째 값:");
   },
   sum() {
-
+    // 저장된 두 값을 더해서 반환
+    return this.firstNum + this.secondNum;
   },
   mul() {
-
+    // 저장된 두 값을 곱해서 반환
+    return this.firstNum * this.secondNum;
   }
 }
 
-calculator.read();
-alert(calculator.sum())
-alert(calculator.mul())
+// calculator.read(); // 값을 입력받아서 객체 내부에 저장
+console.log(calculator.sum()) // 저장된 값을 더해서 결과 반환
+console.log(calculator.mul()) // 저장된 값을 곱해서 결과 반환
+
+
+let ladder = {
+  step: 0,
+  up() {
+    this.step++;
+    return this;
+  },
+  down() {
+    this.step--;
+    return this;
+  },
+  showStep: function() {
+    console.log(this.step)
+    return this;
+  }
+}
+
+// ladder.up();
+// ladder.up();
+// ladder.down();
+// ladder.showStep();
+
+ladder
+  .up()
+  .up()
+  .down()
+  .up()
+  .down()
+  .showStep(); // 1
