@@ -89,4 +89,56 @@ console.log( isNaN(NaN) ); // true
 console.log( isNaN("str") ); // true
 console.log( isNaN(3) ); // false is Not a Number
 
-alert( NaN === NaN ); // false
+console.log( NaN === NaN ); // false
+
+// toString(base)
+// num.toString(base) 메서드는 base진법으로 num을 표현한 후, 이를 문자형으로 변환해 반환합니다.
+// base는 2에서 36까지 쓸 수 있는데, 기본값은 10입니다.
+let num20 = 255;
+
+console.log(num20.toString(16));
+
+// Number 래퍼 객체 메서드들
+(123).toString();      // "123"
+(123.456).toFixed(2);  // "123.46"
+(123.456).toPrecision(4);  // "123.5"
+(123).toExponential(2);    // "1.23e+2"
+
+// String 래퍼 객체 메서드들
+"hello".toUpperCase();     // "HELLO"
+"hello".charAt(0);         // "h"
+"hello".slice(1, 3);       // "el"
+
+// 모두 임시 래퍼 객체를 통해 호출됨
+
+// alert( 0.1 + 0.2 ); // 0.30000000000000004
+
+console.log(typeof (123.456).toFixed(2));
+
+// ✅ 실제 용도 (계산 + 반올림)
+let rounded = Number(num20.toFixed(2));  // 이렇게 씀
+
+// 단순 단항 형변환이 아닌  실무에선 CSS 등에서 '100px', '12pt'와 같이 숫자와 단위를 함께 쓰는 경우가 흔합니다. 대다수 국가에서 '19€'처럼 금액 뒤에 통화 기호를 붙여 표시하기도 하죠. 숫자만 추출하는 방법이 필요해 보이네요.
+// parseInt는 정수, parseFloat는 부동 소수점 숫자를 반환합니다.
+console.log(parseInt('100px'));
+console.log(parseFloat('12.51231rem'));
+console.log(parseInt('12.3'));
+console.log(parseFloat('12.3.4')); // 12.3, 두 번째 점에서 숫자 읽기를 멈춥니다.
+console.log(parseInt('a123'));
+console.log(typeof parseFloat('12.51231rem'));
+console.log(parseInt('0xff', 16));
+console.log(parseInt('ff', 16));
+
+console.log(Math.random());
+
+console.log(Math.max(3, 5, -10, 0, 1));
+console.log(Math.min(1, 2));
+console.log(Math.pow(2, 4));
+
+console.log(typeof 123e6);
+
+// 요약
+// parseInt(str, base)를 사용하면 str을 base진수로 바꿔줍니다(단, 2 ≤ base ≤ 36).
+// num.toString(base)는 숫자를 base진수로 바꾸고, 이를 문자열 형태로 반환합니다.
+
+// 과제 1
