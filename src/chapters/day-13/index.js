@@ -168,3 +168,40 @@ function roundPrice(price, decimals = 2) {
 }
 
 console.log('roundPrice(6.35, 1):', roundPrice(6.35, 1));
+
+// 과제 3
+function readNumber() {
+  let num;
+  
+  do {
+    num = prompt("숫자를 입력하세요.")
+
+    // isFinite는 문자열이 일반 숫자인지 검증하는데 사용한다.
+  } while(!isFinite(num))
+
+  if (num === null || num === '') return null
+
+  return +num
+}
+
+// alert(`Read: ${readNumber()}`)
+
+// 과제 4
+let i = 0;
+while (i < 11) {
+  i += 0.2;
+  // if (i > 9.8 && i < 10.2) alert( i );
+}
+
+//어떤 경우에도 i는 10이 될 수 없습니다.
+// 이런 일이 발생하는 이유는 0.2와 같은 분수를 더할 때 정밀도 손실이 발생하기 때문입니다.
+// 그러므로 소수나 분수를 대상으로 작업 할 땐 등호 비교를 피하세요.
+
+// 과제 5
+function random(min, max) {
+  return min + Math.random() * (max - min);
+}
+
+alert( random(1, 5) ); // 1.2345623452
+alert( random(1, 5) ); // 3.7894332423
+alert( random(1, 5) ); // 4.3435234525

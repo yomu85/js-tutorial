@@ -24,8 +24,8 @@ import './style.css'
 // import './chapters/day-10/index.js'; window.__currentDay = 10;
 // import './chapters/day-11/index.js'; window.__currentDay = 11;
 // import './chapters/day-12/index.js'; window.__currentDay = 12;
-import './chapters/day-13/index.js'; window.__currentDay = 13;
-// import './chapters/day-14/index.js'; window.__currentDay = 14;
+// import './chapters/day-13/index.js'; window.__currentDay = 13;
+import './chapters/day-14/index.js'; window.__currentDay = 14;
 
 // Week 3: 고급 함수 & 프로토타입
 // import './chapters/day-15/index.js'; window.__currentDay = 15;
