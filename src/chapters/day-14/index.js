@@ -1,173 +1,169 @@
-let arrNew = new Array();
-let arrNew2 = [];
-let fruits = ["사과", "오랜지", "자두"]
-fruits[3] = '레몬'
-console.log(fruits.length)
+let single = '작은따옴표';
+let double = "큰따옴표";
 
-let arr = ["사과", { name: "이보라"}, true, function() { alert("안녕하세요.")}]
-console.log(arr[1].name);
-arr.push("바나나")
-arr.unshift("나노바나나")
-console.log(arr.shift());
-arr.push("4k")
-console.log(arr.pop())
+let backticks = `백틱`;
 
-let fruits2 = ["바나나"]
-let arr2 =fruits2;
-console.log( arr2 === fruits2);
-arr2.push("배");
-console.log(fruits2)
-
-let fruits3 = [];
-fruits3[99999] = 5;
-fruits3.age = 25;
-console.log(fruits3.length)
-// 잘못된 방법 예시
-// arr.test = 5 같이 숫자가 아닌 값을 프로퍼티 키로 사용하는 경우
-// arr[0]과 arr[1000]만 추가하고 그사이에 아무런 요소도 없는 경우
-// arr[1000], arr[999]같이 요소를 역순으로 채우는 경우
-
-// push와 pop은 빠르지만 shift와 unshift는 느립니다.
-
-let arr3 = ["사과", "오랜지", "배"];
-
-// for (let i=0; i<arr.length; i++) – 가장 빠른 방법이고 오래된 브라우저와도 호환됩니다.
-// for (let item of arr) – 배열 요소에만 사용되는 모던한 문법입니다.
-// 인덱스 필요한 경우
-for(let i = 0; i < arr3.length; i++) {
-  // console.log(arr3[i])
+function sum(a, b) {
+  return a + b;
 }
 
-// 인덱스 필요없는 경우
-for (let fruit of fruits) {
-  console.log(fruit);
+console.log(`1 + 2 = ${sum(1, 2)}.`); // 1 + 2 = 3.
+
+let guestList = `손님:
+ John
+ Pete
+ Mary
+`;
+
+console.log(guestList); // 손님 리스트를 여러 줄에 걸쳐 작성함
+
+let str1 = "Hello\nWorld"; // '줄 바꿈 기호'를 사용해 두 줄짜리 문자열을 만듦
+
+// 백틱과 일반적인 줄 바꿈 방법(엔터)을 사용해 두 줄짜리 문자열을 만듦
+let str2 = `Hello
+World`;
+
+console.log(str1 == str2); // true
+
+
+// 특수 문자	설명
+// \n	줄 바꿈
+// \r	캐리지 리턴(carriage return). Windows에선 캐리지 리턴과 줄 바꿈 특수 문자를 조합(\r\n)해 줄을 바꿉니다. 캐리지 리턴을 단독으론 사용하는 경우는 없습니다.
+// \', \"	따옴표
+// \\	역슬래시
+// \t	탭
+// \b, \f, \v	각각 백스페이스(Backspace), 폼 피드(Form Feed), 세로 탭(Vertical Tab)을 나타냅니다. 호환성 유지를 위해 남아있는 기호로 요즘엔 사용하지 않습니다.
+// \xXX	16진수 유니코드 XX로 표현한 유니코드 글자입니다(예시: 알파벳 'z'는 '\x7A'와 동일함).
+// \uXXXX	UTF-16 인코딩 규칙을 사용하는 16진수 코드 XXXX로 표현한 유니코드 기호입니다. XXXX는 반드시 네 개의 16진수로 구성되어야 합니다(예시: \u00A9는 저작권 기호 ©의 유니코드임).
+// \u{X…XXXXXX}(한 개에서 여섯 개 사이의 16진수 글자)	UTF-32로 표현한 유니코드 기호입니다. 몇몇 특수한 글자는 두 개의 유니코드 기호를 사용해 인코딩되므로 4바이트를 차지합니다. 이 방법을 사용하면 긴 코드를 삽입할 수 있습니다.
+
+console.log( "\u00A9" ); // ©
+console.log( "\u{20331}" ); // 佫, 중국어(긴 유니코드)
+console.log( "\u{1F60D}" ); // 😍, 웃는 얼굴 기호(긴 유니코드)
+
+console.log("object".length);
+
+let str = `hello`;
+
+console.log(str[0]);
+console.log(str[str.length - 1]);
+console.log(str[1000]);
+console.log(str.charAt(0));
+console.log(str.charAt(1000));
+
+for (let char of "Hello") {
+  console.log(char)
 }
 
-//‘length’ 프로퍼티
-// length 프로퍼티는 배열 내 요소의 개수가 아니라 가장 큰 인덱스에 1을 더한 값입니다.
-// 배열 비울 때 사용 arr.length = 0;
+// str[0] = 't' 문자열 불변성으로 수정할 수 없습니다.
+console.log(str);
 
-// new Array()
-// 예시를 통해 new Array()의 이런 특징이 어떻게 실수를 유발 new Array() 대신 리터럴로 선언
-let arr4 = new Array(2);
-// new Array(number)을 호출하면 길이가 number인 배열이 만들어지는데, 이 때 요소는 비어있습니다.
-console.log(arr4.length);
 
-let matrix = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-];
+let str3 = 'Hi';
+str3 = 'h' + str3[1]; // 문자열 전체를 교체함
+console.log(str3);
 
-console.log( matrix[1][1] ); // 5, 중심에 있는 요소
+console.log('Interface'.toUpperCase());
+console.log('Interface'.toLowerCase());
+console.log('Interface'[0].toLowerCase());
+console.log('Interface'.slice(3,5).toUpperCase());
 
-let arr5 = [1,2,3]
+let str4 = "Widget with id";
 
-console.log(arr5);
-console.log(String(arr5) === '1,2,3');
+console.log(str4.indexOf('Widget'));
+console.log(str4.indexOf('widget'));
+console.log(str4.indexOf('id'));
 
-// 문자열로의 형 변환
-console.log([] + 1);
-console.log([1] + 1);
-console.log([1, 2] + 1 === '1,21');
+let str10 = 'As sly as a fox, as strong as an ox';
+let target = 'as'
+
+let pos = -1;
+while ((pos = str10.indexOf(target, pos + 1)) != -1) {
+  console.log(`위치: ${pos}`);
+}
+// let pos = 0;
+
+// while (true) {
+//   let foundPos = str10.indexOf(target, pos);
+//   if(foundPos == -1) break;
+
+//   console.log(`위치: ${foundPos}`);
+//   pos = foundPos + 1
+// }
+
+let str11 = "Widget with id"
+
+if(str11.indexOf("Widget") !== -1) {
+  console.log('찾았다!')
+}
+
+if(str11.includes("Widget", 0)) {
+  console.log('찾았네!')
+}
+
+let filename = 'report.pdf';
+
+if (filename.endsWith('.pdf')) {
+  console.log('PDF 파일입니다.');
+}
+
+let url = 'https://example.com/api/users';
+
+if (url.startsWith('https://')) {
+  console.log('보안 연결');
+}
+
+let str20 = 'stringify';
+
+console.log(str20.slice(3, 5));
+console.log(str20.slice(0, 1));
+
+console.log(str20.slice(2));
+console.log(str20.slice(-4, -1));
+
+// alert( 'a' > 'A' ); // true
+// alert( 'Österreich' > 'Zealand' ); // true
+console.log( 'x'.length ); // 2, 수학에서 쓰이는 대문자 X(그리스 문자 카이 - 옮긴이)
+console.log( '😂'.length ); // 2, 웃으면서 눈물 흘리는 얼굴을 나타내는 이모티콘
+console.log( '𩷶'.length ); // 2, 사용 빈도가 낮은 중국어(상형문자)
+
+// str.trim() – 문자열 앞과 끝의 공백 문자를 다듬어 줍니다(제거함).
 
 // 과제1
-let fruits1 = ["사과", "배", "오렌지"];
+function ucFirst(str) {
+  if (!str) return str; //문자열 래퍼객체 메소드를 쓰기 전 얼리리턴
+  return str[0].toUpperCase() + str.slice(1)
+}
 
-let shoppingCart = fruits1;
-shoppingCart.push("바나나")
-
-console.log(fruits1.length);
+if(ucFirst("john") == "John") {
+  console.log("test 통과했습니다.");
+}
 
 // 과제2
-let styles = ["Jazz", "Blues"];
-styles.push("Rock-n-Roll");
-styles[Math.floor((styles.length - 1) / 2)] = "Classics";
-console.log(styles.shift());
-styles.unshift("Rap", "Reggae");
-console.log(styles);
+function checkSpam(str) {
+  let value = str.toLowerCase();
+  return value.includes('viagra') || value.includes('xxx')
+}
+if(checkSpam('buy ViAgRA now') == true) {
+  console.log('spam에 저장됩니다.');
+}
 
 // 과제3
-let arr6 = ["a", "b"];
+function truncate(str, maxlength) {
+  let strLength = str.length;
+  if (strLength < maxlength) {
+    return str
+  }
 
-arr6.push(function() {
-  console.log(this);
-})
-arr6[2]();
+  return str.slice(0, maxlength - 1) + "..."
+}
+
+console.log(truncate("What I'd like to tell on this topic is:", 20));
+console.log(truncate("Hi everyone!", 20));
 
 // 과제4
-function sumInput() {
-  let numbers = [];
-  while(true) {
-    let value = prompt('숫자를 입력해주세요.', 0);
-
-    if(value === null || value === '' || !isFinite(value)) break;
-    numbers.push(+value);
-  };
-
-  let sum = 0;
-  for (let number of numbers) {
-    sum += number
+function extractCurrencyValue(str) {
+  if(str.includes('$')) {
+    return +str.slice(1);
   }
-  console.log(sum);
 }
-// sumInput()
-
-function getMaxSubSum(arr) {
-  let maxSum = 0;
-
-  for (let i= 0; i< arr.length; i ++) {
-    let sum = 0;
-    for (let j = i; j < arr.length; j++) {
-      sum += arr[j];
-      maxSum = Math.max(maxSum, sum); //최대값 갱신
-    }
-  }
-  return maxSum;
-}
-// console.log(getMaxSubSum([1, -2, 3, 4, -9, 6]));
-
-function getMaxSubSumFast(arr) {
-  let maxSum = 0;
-  let partialSum = 0;
-
-  for (let item of arr) {
-    partialSum += item;
-    maxSum = Math.max(maxSum, partialSum);
-    if (partialSum < 0) partialSum = 0;
-  }
-
-  return maxSum
-}
-
-console.log(getMaxSubSumFast([1, -2, 3, 4, -9, 6]));
-
-let arr11 = ["I", "study", "JavaScript", "right", "now"];
-arr11.splice(2, 0, "complex", "language");
-console.log(arr11);
-
-let arr12 = [1, 2, 5]
-
-arr12.splice(-1, 0, 3, 4)
-
-console.log(arr12);
-
-let arr13 = ["t", "e", "s", "t"];
-console.log(arr13.slice(1, 3));
-console.log(arr13.slice(-2));
-
-let arr14 = [1, 2];
-
-console.log(arr14.concat([3, 4]));
-console.log(arr14.concat([3, 4], 5));
-
-// arr.forEach(function(item, index, array) {
-//   // 요소에 무언가를 해
-// })
-
-// 특수한 케이스 축약법
-["t", "e", "s", "t"].forEach(console.log);
-
-["Bilbo", "Gandalf", "Nazgul"].forEach((item, index, array) => {
-  console.log(`${item} is at index ${index} in ${array}`);
-});

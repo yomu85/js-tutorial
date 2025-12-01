@@ -25,10 +25,10 @@ import './style.css'
 // import './chapters/day-11/index.js'; window.__currentDay = 11;
 // import './chapters/day-12/index.js'; window.__currentDay = 12;
 // import './chapters/day-13/index.js'; window.__currentDay = 13;
-// import './chapters/day-14/index.js'; window.__currentDay = 14;
+import './chapters/day-14/index.js'; window.__currentDay = 14;
 
 // Week 3: 자료구조와 Date
-import './chapters/day-15/index.js'; window.__currentDay = 15;
+// import './chapters/day-16/index.js'; window.__currentDay = 15;
 // import './chapters/day-16/index.js'; window.__currentDay = 16;
 // import './chapters/day-17/index.js'; window.__currentDay = 17;
 // import './chapters/day-18/index.js'; window.__currentDay = 18;
