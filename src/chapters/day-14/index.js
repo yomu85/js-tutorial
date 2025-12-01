@@ -111,5 +111,63 @@ function sumInput() {
   }
   console.log(sum);
 }
-sumInput()
+// sumInput()
 
+function getMaxSubSum(arr) {
+  let maxSum = 0;
+
+  for (let i= 0; i< arr.length; i ++) {
+    let sum = 0;
+    for (let j = i; j < arr.length; j++) {
+      sum += arr[j];
+      maxSum = Math.max(maxSum, sum); //최대값 갱신
+    }
+  }
+  return maxSum;
+}
+// console.log(getMaxSubSum([1, -2, 3, 4, -9, 6]));
+
+function getMaxSubSumFast(arr) {
+  let maxSum = 0;
+  let partialSum = 0;
+
+  for (let item of arr) {
+    partialSum += item;
+    maxSum = Math.max(maxSum, partialSum);
+    if (partialSum < 0) partialSum = 0;
+  }
+
+  return maxSum
+}
+
+console.log(getMaxSubSumFast([1, -2, 3, 4, -9, 6]));
+
+let arr11 = ["I", "study", "JavaScript", "right", "now"];
+arr11.splice(2, 0, "complex", "language");
+console.log(arr11);
+
+let arr12 = [1, 2, 5]
+
+arr12.splice(-1, 0, 3, 4)
+
+console.log(arr12);
+
+let arr13 = ["t", "e", "s", "t"];
+console.log(arr13.slice(1, 3));
+console.log(arr13.slice(-2));
+
+let arr14 = [1, 2];
+
+console.log(arr14.concat([3, 4]));
+console.log(arr14.concat([3, 4], 5));
+
+// arr.forEach(function(item, index, array) {
+//   // 요소에 무언가를 해
+// })
+
+// 특수한 케이스 축약법
+["t", "e", "s", "t"].forEach(console.log);
+
+["Bilbo", "Gandalf", "Nazgul"].forEach((item, index, array) => {
+  console.log(`${item} is at index ${index} in ${array}`);
+});

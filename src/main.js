@@ -9,7 +9,7 @@ import './style.css'
 // ========================================
 // 💡 하나만 주석 해제하세요!
 
-// Week 1: 기초 다지기
+// Week 1: 자바스크립트 기본
 // import './chapters/day-01/index.js'; window.__currentDay = 1;
 // import './chapters/day-02/index.js'; window.__currentDay = 2;
 // import './chapters/day-03/index.js'; window.__currentDay = 3;
@@ -18,17 +18,17 @@ import './style.css'
 // import './chapters/day-06/index.js'; window.__currentDay = 6;
 // import './chapters/day-07/index.js'; window.__currentDay = 7;
 
-// Week 2: 객체 & 자료구조
+// Week 2: 객체 기본
 // import './chapters/day-08/index.js'; window.__currentDay = 8;
 // import './chapters/day-09/index.js'; window.__currentDay = 9;
 // import './chapters/day-10/index.js'; window.__currentDay = 10;
 // import './chapters/day-11/index.js'; window.__currentDay = 11;
 // import './chapters/day-12/index.js'; window.__currentDay = 12;
 // import './chapters/day-13/index.js'; window.__currentDay = 13;
-import './chapters/day-14/index.js'; window.__currentDay = 14;
+// import './chapters/day-14/index.js'; window.__currentDay = 14;
 
-// Week 3: 고급 함수 & 프로토타입
-// import './chapters/day-15/index.js'; window.__currentDay = 15;
+// Week 3: 자료구조와 Date
+import './chapters/day-15/index.js'; window.__currentDay = 15;
 // import './chapters/day-16/index.js'; window.__currentDay = 16;
 // import './chapters/day-17/index.js'; window.__currentDay = 17;
 // import './chapters/day-18/index.js'; window.__currentDay = 18;
