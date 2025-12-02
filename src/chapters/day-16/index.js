@@ -203,5 +203,97 @@ console.log([2, 4, 6, 8].every(num => num % 2 === 0)); //true
 // 기타
 // Array.isArray(arr) – arr이 배열인지 여부를 판단함
 
+// 과제 1
+function camelize(str) {
+  return str.split('-')
+                  .map((word, index) => index === 0 ? word : word[0].toUpperCase() + word.slice(1))
+                  .join('');
+}
 
+console.log(camelize("background-color"));
+console.log(camelize("list-style-image"));
+console.log(camelize("-webkit-transition"));
 
+// 과제2
+function filterRange(arr, min , max) {
+  return arr.filter(num => (min <= num && num <= max))
+}
+
+let arr20 = [5, 3, 8, 1];
+
+let filtered = filterRange(arr20, 1, 4)
+
+console.log(filtered);
+console.log(arr20);
+
+// 과제3
+// let arr21 = [5, 3, 8, 1];
+// function filterRangeInPlace(arr, min, max) {
+//    arr21 = arr.filter(num => (min <= num && num <= max))
+// }
+
+// filterRangeInPlace(arr21, 1, 4)
+
+// console.log(arr21);
+function filterRangeInPlace(arr, min, max) {
+  for (let i = 0; i < arr.length; i++) {
+    let val = arr[i];
+    
+    // 범위 밖의 요소를 제거
+    if (val < min || val > max) {
+      arr.splice(i, 1);
+      i--; // 조건의 만족하면 1개가 삭제되서 i-- 처리
+    }
+  }
+}
+
+let arr21 = [5, 3, 8, 1];
+let original = arr21;
+
+filterRangeInPlace(arr21, 1, 4)
+
+console.log(arr21);
+console.log(original);
+console.log(arr21 === original);
+
+// some()   // "혹시 나한테 관심 있는 사람 있나?" ❤️
+// every()  // "모두 나를 좋아해줬으면..." 💔
+// find()   // "이상형 찾기" 🔍
+// filter() // "내 스타일만 모아보기" ✨
+
+// map()     // "인생 리뉴얼" 🔄
+// reduce()  // "인생 정산" 💰
+// sort()    // "인생 재정비" 📊
+// reverse() // "인생 역주행" ⏪
+
+// push()    // "짐 싣기" 📦
+// pop()     // "짐 빼기" 📤
+// shift()   // "새치기 당하기" 😤
+// unshift() // "새치기 하기" 😈
+// splice()  // "수술" ✂️
+// slice()   // "복사본 뜯기" 📋
+
+// ---
+// 파괴형
+// push()      // 끝에 추가
+// pop()       // 끝에서 제거
+// splice()    // 중간 추가/제거
+// sort()      // 정렬
+// reverse()   // 뒤집기
+
+// 비파괴형
+// map()       // 변환
+// filter()    // 필터링
+// slice()     // 자르기
+// concat()    // 합치기
+// flat()      // 평탄화
+// flatMap()   // map + flat
+
+// 반환만 하는 애들 (배열 안 만듬)
+// find()      // 요소 찾기
+// findIndex() // 인덱스 찾기
+// includes()  // 포함 확인
+// some()      // 하나라도 true?
+// every()     // 모두 true?
+// reduce()    // 집계 (원하는 타입 반환)
+// forEach()   // 순회 (undefined 반환)
