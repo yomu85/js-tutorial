@@ -1,0 +1,11 @@
+{
+  "printWidth": 160,
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "options": {
+        "printWidth": 80
+      }
+    }
+  ]
+}
