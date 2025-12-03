@@ -93,11 +93,45 @@ let values = [
 console.log(unique(values));
 
 // 과제2
+// function aclean(arr) {
+//   let map = new Map();
+
+//   for (let word of arr) {
+//     // 단어를 글자 단위로 쪼갠 후, 알파벳 순으로 정렬한 다음에 다시 합칩니다.
+//     let sorted = word.toLowerCase().split("").sort().join("");
+//     map.set(sorted, word);
+//   }
+//   console.log(map);
+
+//   return Array.from(map.values());
+// }
+
+// let arr22 = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+// console.log(aclean(arr22));
 
 function aclean(arr) {
-  return arr;
+  let obj = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    let sorted = arr[i].toLowerCase().split("").sort().join("");
+    obj[sorted] = arr[i];
+  }
+
+  return Object.values(obj);
 }
 
 let arr22 = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
 console.log(aclean(arr22));
+
+// 과제3
+let map = new Map();
+
+map.set("name", "John");
+
+let keys = [...map.keys()];
+
+// Error: keys.push is not a function
+keys.push("more");
+console.log(keys);

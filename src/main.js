@@ -30,9 +30,9 @@ import "./style.css";
 // Week 3: 자료구조와 Date
 // import './chapters/day-16/index.js'; window.__currentDay = 15;
 // import './chapters/day-16/index.js'; window.__currentDay = 16;
-import "./chapters/day-17/index.js";
-window.__currentDay = 17;
-// import './chapters/day-18/index.js'; window.__currentDay = 18;
+// import './chapters/day-17/index.js'; window.__currentDay = 17;
+import "./chapters/day-18/index.js";
+window.__currentDay = 18;
 // import './chapters/day-19/index.js'; window.__currentDay = 19;
 // import './chapters/day-20/index.js'; window.__currentDay = 20;
 // import './chapters/day-21/index.js'; window.__currentDay = 21;
