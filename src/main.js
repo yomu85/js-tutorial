@@ -2,7 +2,7 @@
 // 메인 진입점
 // ========================================
 
-import './style.css'
+import "./style.css";
 
 // ========================================
 // 🎯 오늘 학습할 Day를 여기서 import
@@ -29,8 +29,9 @@ import './style.css'
 
 // Week 3: 자료구조와 Date
 // import './chapters/day-16/index.js'; window.__currentDay = 15;
-import './chapters/day-16/index.js'; window.__currentDay = 16;
-// import './chapters/day-17/index.js'; window.__currentDay = 17;
+// import './chapters/day-16/index.js'; window.__currentDay = 16;
+import "./chapters/day-17/index.js";
+window.__currentDay = 17;
 // import './chapters/day-18/index.js'; window.__currentDay = 18;
 // import './chapters/day-19/index.js'; window.__currentDay = 19;
 // import './chapters/day-20/index.js'; window.__currentDay = 20;
@@ -81,9 +82,9 @@ const currentDay = window.__currentDay || null;
 
 if (currentDay) {
   // localStorage에 현재 Day만 저장 (누적 X)
-  localStorage.setItem('js-current-day', currentDay);
-  
+  localStorage.setItem("js-current-day", currentDay);
+
   console.log(`✅ The last line: 오늘도 화이팅! 현재 Day ${currentDay}`);
 } else {
-  console.warn('⚠️ Day를 자동으로 감지하지 못했습니다.');
+  console.warn("⚠️ Day를 자동으로 감지하지 못했습니다.");
 }

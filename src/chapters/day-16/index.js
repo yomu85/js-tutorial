@@ -425,3 +425,98 @@ console.log(arr100); // [1, 2] ← 안 바뀜
 // 3. 배열 - 기존 배열 수정 ⚠️
 [arr100[0], arr100[1]] = [10, 20];
 console.log(arr100); // [10, 20] ← 바뀜!
+
+// 실제 값을 바꿔 경우의 수 체크
+// function shuffle(arr) {
+//   for (let i = arr.length - 1; i > 0; i--) {
+//     let j = Math.floor(Math.random() * (i + 1));
+//     [arr[i], arr[j]] = [arr[j], arr[i]];
+//   }
+// }
+// // 1, 2, 3으로 만들 수 있는 모든 순열의 빈도를 세줍니다.
+// let count = {
+//   123: 0,
+//   132: 0,
+//   213: 0,
+//   231: 0,
+//   321: 0,
+//   312: 0,
+// };
+
+// for (let i = 0; i < 1000000; i++) {
+//   let array = [1, 2, 3];
+//   shuffle(array);
+//   count[array.join("")]++;
+// }
+
+// // 만들 수 있는 모든 순열의 생성 빈도를 세서 출력해줍니다.
+// for (let key in count) {
+//   alert(`${key}: ${count[key]}`);
+// }
+
+// 과제11
+function getAverageAge(arr) {
+  let sum = 0;
+  arr.map((item) => {
+    sum += item.age;
+  });
+  return sum / arr.length;
+}
+let john11 = { name: "John", age: 25 };
+let pete11 = { name: "Pete", age: 30 };
+let mary11 = { name: "Mary", age: 29 };
+
+let arr11 = [john11, pete11, mary11];
+
+console.log(getAverageAge(arr11));
+
+// 과제12
+function unique(arr) {
+  // 방법 1 (성능 가장 빠름)
+  let setArr = new Set(arr);
+  return [...setArr];
+
+  // 방법 2 (성능 느림)
+  // return arr.filter((item, index) => arr.indexOf(item) === index);
+
+  // 방법 3 (중간)
+  // let result = [];
+  // for (let item of arr) {
+  //   if (!result.includes(item)) {
+  //     result.push(item);
+  //   }
+  // }
+  // return result;
+}
+
+let strings = [
+  "Hare",
+  "Krishna",
+  "Hare",
+  "Krishna",
+  "Krishna",
+  "Krishna",
+  "Hare",
+  "Hare",
+  ":-O",
+];
+
+console.log("unique:", unique(strings));
+
+// 과제13
+function groupById(arr) {
+  return arr.reduce((acc, item) => {
+    acc[item.id] = item;
+
+    return acc;
+  }, {});
+}
+let users13 = [
+  { id: "john", name: "John Smith", age: 20 },
+  { id: "ann", name: "Ann Smith", age: 24 },
+  { id: "pete", name: "Pete Peterson", age: 31 },
+];
+
+let usersById = groupById(users13);
+
+console.log("usersById:", usersById);
