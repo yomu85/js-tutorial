@@ -364,14 +364,64 @@ let john8 = { name: "John", surname: "Smith", id: 1 };
 let pete8 = { name: "Pete", surname: "Hunt", id: 2 };
 let mary8 = { name: "Mary", surname: "Key", id: 3 };
 
-let user8 = [john8, pete8, mary8];
+let users8 = [john8, pete8, mary8];
 
-let usersMapped = user8.a;
-// usersMapped = [
-//   { fullName: "John Smith", id: 1 },
-//   { fullName: "Pete Hunt", id: 2 },
-//   { fullName: "Mary Key", id: 3 },
-// ];
+//세 개의 프로퍼티 name과 surname, id를 가진 객체 user가 담긴 배열이 있습니다.
+// name과 surname을 조합해 fullName을 만들고, 이를 이용해 두 개의 프로퍼티 id와 fullName을
+// 가진 객체를 담은 새로운 배열을 반환해주는 코드를 작성해보세요.
+let usersMapped = users8.map((user) => ({
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id,
+}));
 
 console.log(usersMapped[0].id); // 1
 console.log(usersMapped[0].fullName); // John Smith
+
+// 과제9
+function sortByAge(arr) {
+  return arr.sort((a, b) => {
+    return a.age - b.age;
+  });
+}
+let john9 = { name: "John", age: 25 };
+let pete9 = { name: "Pete", age: 30 };
+let mary9 = { name: "Mary", age: 28 };
+
+let arr9 = [pete9, john9, mary9];
+
+sortByAge(arr9);
+
+console.log(arr9);
+
+// 과제10
+function shuffle(arr) {
+  let shuffled = [...arr];
+  for (let i = arr.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+let arr10 = [1, 2, 3, 4, 5];
+
+console.log(shuffle(arr10));
+console.log(arr10);
+
+/* *중요* 객체 구조 분해 & 배열 swap */
+const obj100 = { a: 1, b: 2 };
+let arr100 = [1, 2];
+
+// 1. 객체 - 새 변수 생성
+const { a, b } = obj100;
+console.log(a, b); // 1 2
+console.log(obj100); // { a: 1, b: 2 } ← 안 바뀜
+
+// 2. 배열 - 새 변수 생성
+const [x, y] = arr100;
+console.log(x, y); // 1 2
+console.log(arr100); // [1, 2] ← 안 바뀜
+
+// 3. 배열 - 기존 배열 수정 ⚠️
+[arr100[0], arr100[1]] = [10, 20];
+console.log(arr100); // [10, 20] ← 바뀜!
