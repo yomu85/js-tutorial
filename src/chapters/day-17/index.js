@@ -1,3 +1,13 @@
+// 이터러블의 종류:
+// 1. 배열
+// 2. 문자열
+// 3. Set
+// 4. Map
+// 5. TypedArray
+// 6. arguments
+// 7. NodeList
+// 8. 기타 [Symbol.iterator]를 구현한 객체
+
 // 핵심 차이: "이전 값 기억"
 // 고유 ID 생성
 function* uniqueId(prefix = "id") {
