@@ -20,7 +20,7 @@ function calculateExpensiveOperation(obj) {
   console.log("연산 수행 중...");
   // 무거운 연산 시뮬레이션
   let result = Object.keys(obj).reduce((sum, key) => sum + obj[key], 0);
-  
+
   cache.set(obj, result);
   return result;
 }
@@ -50,8 +50,34 @@ console.log(`${user1.name} 방문:`, countVisit(user1)); // 2
 console.log(`${user2.name} 방문:`, countVisit(user2)); // 1
 console.log(`${user1.name} 방문:`, countVisit(user1)); // 3
 
-
 console.log("\n💡 WeakMap 사용 시기:");
 console.log("- 객체에 대한 부가 정보를 저장할 때");
 console.log("- 캐싱이 필요하지만 메모리 누수를 방지하고 싶을 때");
 console.log("- 객체가 사라지면 관련 데이터도 자동으로 정리되길 원할 때");
+
+// 과제1
+let messages = [
+  { text: "Hello", from: "John" },
+  { text: "How goes?", from: "John" },
+  { text: "See you soon", from: "Alice" },
+];
+
+let readMessages = new WeakSet();
+
+readMessages.add(messages[0]);
+readMessages.add(messages[1]);
+
+// alert("message 0은 읽음 상태인가요?:" + readMessages.has(messages[0]));
+messages.shift();
+
+// 과제2
+let messages2 = [
+  { text: "Hello", from: "John" },
+  { text: "How goes?", from: "John" },
+  { text: "See you soon", from: "Alice" },
+];
+
+let readMap = new WeakMap();
+readMap.set(messages2[0], new Date(2017, 1, 1));
+
+console.log(readMap);
