@@ -148,7 +148,7 @@
       /* 답글 표시 */
       .reply-indicator {
         font-size: 12px;
-        color: #a50034;
+        color: #666;
         margin-bottom: 4px;
       }
 
@@ -254,13 +254,38 @@
       // renderComments 함수를 작성하여 commentsData를 HTML로 변환
 
       function renderComments(commentList, depth = 0) {
-        // TODO: 재귀 함수 구현
-        // 힌트:
-        // 1. commentList를 순회하면서 각 댓글을 HTML로 변환
-        // 2. depth를 이용해 comment-level-X 클래스 추가
-        // 3. replies가 있으면 재귀 호출
+        let html = "";
 
-        return ""; // 구현 필요
+        console.log('commentList:', commentList);
+        
+        commentList.forEach((comment) => {
+          console.log(comment);
+          // depth에 따른 들여쓰기 클래스
+          const levelClass = depth > 0 ? `comment-level-${depth}` : '';
+          // 답글 표시
+          const replyIndicator = depth > 0 ? '<span class="reply-indicator">답글</span>' : '';
+
+          // 댓글 HTML 생성
+          html += `<div class="comment comment-level-${depth}">
+            ${replyIndicator}
+            <div class="comment-header">
+              <span class="comment-author">${comment.author}</span>
+              <span class="comment-date">${comment.date}</span>
+            </div>
+            <div class="comment-text">${comment.text}</div>
+            <div class="comment-actions">
+              <button class="comment-action-btn">답글</button>
+              <button class="comment-action-btn">좋아요</button>
+            </div>
+          </div>`
+
+          // 답글이 있으면 재귀 호출
+          if (comment.replies && comment.replies.length > 0) {
+            html += renderComments(comment.replies, depth + 1);
+          }
+        });
+
+        return html
       }
 
       // ==========================================
