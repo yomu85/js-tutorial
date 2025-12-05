@@ -192,3 +192,166 @@ function getSecondsToTomorrow() {
   return `내일까지 ${gap}초가 남았습니다`;
 }
 console.log(getSecondsToTomorrow());
+
+// 과제8
+function formatDate(date) {
+  let diff = new Date() - date; // 차이(ms)
+
+  if (diff < 1000) {
+    return "현재";
+  }
+
+  let sec = Math.floor(diff / 1000);
+
+  if (sec < 60) {
+    return sec + "초 전";
+  }
+
+  let min = Math.floor(diff / 60000);
+  if (min < 60) {
+    return min + "분 전";
+  }
+
+  // 날짜의 포맷을 변경
+  // 일, 월, 시, 분이 숫자 하나로 구성되어있는 경우, 앞에 0을 추가해줌
+  let d = date;
+  d = [
+    "0" + d.getDate(),
+    "0" + (d.getMonth() + 1),
+    "" + d.getFullYear(), // 숫자를 문자열로 변환해서 slice() 문자열 메서드를 쓰기 위함
+    "0" + d.getHours(),
+    "0" + d.getMinutes(),
+  ].map((num) => num.slice(-2)); //  모든 num의 마지막 숫자 2개를 가져옴
+
+  return d.slice(0, 3).join(".") + " " + d.slice(3).join(":");
+}
+
+console.log(formatDate(new Date(new Date() - 1)));
+console.log(formatDate(new Date(new Date() - 30 * 1000)));
+console.log(formatDate(new Date(new Date() - 5 * 60 * 1000)));
+console.log(formatDate(new Date(new Date() - 86400 * 1000)));
+
+// 현재날짜 재포맷 2025-12-05 표기
+const today10 = new Date();
+const dateString = today10.toLocaleDateString("en-CA");
+console.log(dateString);
+
+// JSON과 메서드
+let user = {
+  name: "John",
+  age: 30,
+
+  toString() {
+    return `{name: "${this.name}", age: ${this.age}}`;
+  },
+};
+
+// JSON.stringify 호출 시 무시(안나옴)되는 프로퍼티는 아래와 같습니다.
+// 1.함수 프로퍼티 (메서드)
+// 2.심볼형 프로퍼티 (키가 심볼인 프로퍼티)
+// 3.값이 undefined인 프로퍼티
+let jsonUser = JSON.stringify(user, ["name"], 3);
+console.log("jsonUser:", jsonUser);
+let oldUser = JSON.parse(jsonUser);
+console.log(oldUser);
+
+let room = {
+  number: 23,
+  occupiedBy: "Conference",
+};
+
+// 1. 값만 null/undefined로 변경 (키는 남음)
+room.occupiedBy = null;
+console.log(room);
+// { number: 23, occupiedBy: null }  ← 키는 존재
+
+// 2. delete로 속성 자체 제거 (키도 사라짐)
+delete room.occupiedBy;
+console.log(room);
+
+let room2 = {
+  number: 23,
+};
+
+let meetup = {
+  title: "Conference",
+  participants: [{ name: "John" }, { name: "Alice" }],
+  place: room2, // meetup은 room2 참조합니다.
+};
+
+room2.occupiedBy = meetup; // room2 references meetup
+
+console.log(JSON.stringify(meetup, ["title", "participants"]));
+// {"title":"Conference","participants":[{},{}]}
+
+// 2. 배열만
+let arr = [1, 2, 3];
+console.log(typeof arr);
+let strArr = JSON.stringify(arr);
+console.log(typeof JSON.stringify(arr));
+
+let numbers = JSON.parse(strArr);
+
+console.log(numbers[1]); // 1
+
+let userDa = {
+  title: "Conference",
+  date: new Date(2017, 0, 1),
+  room,
+};
+
+let userData = JSON.stringify(userDa);
+
+let user33 = JSON.parse(userData);
+
+console.log(user33);
+
+let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';
+
+let meetup44 = JSON.parse(str, function (key, value) {
+  if (key === "date") return new Date(value);
+  return value;
+});
+
+console.log(meetup44);
+
+// 과제1
+let user1 = {
+  name: "JOHN Smith",
+  age: 35,
+};
+
+let jsonUser1 = JSON.stringify(user1);
+console.log(jsonUser1);
+
+let parseUser1 = JSON.parse(jsonUser1);
+console.log(parseUser1);
+
+// 과제2
+let room02 = {
+  number: 23,
+};
+
+let meetup02 = {
+  title: "Conference",
+  occupiedBy: [{ name: "John" }, { name: "Alice" }],
+  place: room02,
+};
+
+room02.occupiedBy = meetup02;
+meetup02.self = meetup02;
+
+console.log(room02);
+console.log(
+  JSON.stringify(meetup02, function replacer(key, value) {
+    return key !== "" && value === meetup02 ? undefined : value;
+  })
+);
+
+// 객체에서 undefined 반환
+// { a: 1, b: undefined, c: 3 }
+// → '{"a":1,"c":3}'  // 키-값 쌍 전체 제거
+
+// 배열에서 undefined 반환
+// [1, undefined, 3]
+// → '[1,null,3]'  // null로 변환 (인덱스 유지)

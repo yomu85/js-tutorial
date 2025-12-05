@@ -34,11 +34,11 @@ import "./style.css";
 // import "./chapters/day-18/index.js"; window.__currentDay = 18;
 // import './chapters/day-19/index.js'; window.__currentDay = 19;
 // import './chapters/day-20/index.js'; window.__currentDay = 20;
-import "./chapters/day-21/index.js";
-window.__currentDay = 21;
+// import "./chapters/day-21/index.js"; window.__currentDay = 21;
 
 // Week 4: 프로토타입 & 클래스
-// import './chapters/day-22/index.js'; window.__currentDay = 22;
+import "./chapters/day-22/index.js";
+window.__currentDay = 22;
 // import './chapters/day-23/index.js'; window.__currentDay = 23;
 // import './chapters/day-24/index.js'; window.__currentDay = 24;
 // import './chapters/day-25/index.js'; window.__currentDay = 25;
