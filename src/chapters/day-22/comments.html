@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>중첩 댓글 시스템</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: #f5f5f5;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .header {
+        background-color: #a50034;
+        color: white;
+        padding: 24px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .header p {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      .post {
+        padding: 24px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .post-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 12px;
+        color: #333;
+      }
+
+      .post-content {
+        font-size: 15px;
+        color: #666;
+        line-height: 1.8;
+      }
+
+      .comments-section {
+        padding: 24px;
+      }
+
+      .comments-header {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .comment-count {
+        color: #a50034;
+      }
+
+      /* 여기에 재귀 렌더링된 댓글들이 들어갈 영역 */
+      #commentsContainer {
+        /* 댓글이 렌더링될 공간 */
+      }
+
+      .comment {
+        padding: 16px;
+        margin-bottom: 8px;
+        background-color: #fafafa;
+        border-radius: 6px;
+        border-left: 3px solid #e0e0e0;
+      }
+
+      .comment-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .comment-author {
+        font-weight: bold;
+        color: #333;
+        margin-right: 12px;
+      }
+
+      .comment-date {
+        font-size: 13px;
+        color: #999;
+      }
+
+      .comment-text {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .comment-actions {
+        margin-top: 8px;
+        font-size: 13px;
+      }
+
+      .comment-action-btn {
+        color: #a50034;
+        cursor: pointer;
+        margin-right: 12px;
+        background: none;
+        border: none;
+        padding: 4px 0;
+        font-size: 13px;
+      }
+
+      .comment-action-btn:hover {
+        text-decoration: underline;
+      }
+
+      /* 중첩 레벨에 따른 들여쓰기 스타일 */
+      .comment-level-1 {
+        margin-left: 20px;
+      }
+      .comment-level-2 {
+        margin-left: 40px;
+      }
+      .comment-level-3 {
+        margin-left: 60px;
+      }
+      .comment-level-4 {
+        margin-left: 80px;
+      }
+
+      /* 답글 표시 */
+      .reply-indicator {
+        font-size: 12px;
+        color: #a50034;
+        margin-bottom: 4px;
+      }
+
+      .no-comments {
+        text-align: center;
+        padding: 40px;
+        color: #999;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>재귀 함수로 구현하는 댓글 시스템</h1>
+        <p>중첩된 답글을 재귀로 렌더링하는 예제입니다</p>
+      </div>
+
+      <div class="post">
+        <div class="post-title">LG 전자 웹사이트 성능 최적화 후기</div>
+        <div class="post-content">
+          최근 LG 웹사이트 TBT 개선 작업을 진행하면서 캐러셀 컴포넌트 최적화와 CSS 아키텍처 개선을 통해 성능을 크게 향상시켰습니다. 특히 스켈레톤 로딩 시스템
+          도입으로 사용자 경험이 개선되었습니다.
+        </div>
+      </div>
+
+      <div class="comments-section">
+        <div class="comments-header">댓글 <span class="comment-count" id="commentCount">0</span>개</div>
+
+        <!-- 여기에 재귀 함수로 렌더링된 댓글들이 표시됩니다 -->
+        <div id="commentsContainer">
+          <div class="no-comments">아직 댓글이 없습니다. 첫 댓글을 작성해보세요!</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 댓글 데이터 (실제로는 서버에서 받아올 데이터)
+      const commentsData = [
+        {
+          id: 1,
+          author: "김개발",
+          date: "2024-12-05 10:30",
+          text: "성능 최적화 작업 고생 많으셨습니다! TBT 개선이 얼마나 되었나요?",
+          replies: [
+            {
+              id: 2,
+              author: "이프론트",
+              date: "2024-12-05 11:15",
+              text: "저도 궁금합니다. 구체적인 수치가 있으면 공유 부탁드려요!",
+              replies: [
+                {
+                  id: 3,
+                  author: "Arongday",
+                  date: "2024-12-05 11:45",
+                  text: "약 40% 정도 개선되었습니다. 특히 캐러셀의 타이머 중앙화가 큰 효과를 봤어요.",
+                  replies: [],
+                },
+              ],
+            },
+            {
+              id: 4,
+              author: "박성능",
+              date: "2024-12-05 12:00",
+              text: "스켈레톤 로딩은 어떤 라이브러리 사용하셨나요?",
+              replies: [
+                {
+                  id: 5,
+                  author: "Arongday",
+                  date: "2024-12-05 12:30",
+                  text: "별도 라이브러리 없이 CSS로 직접 구현했습니다. 용량 최적화를 위해서요.",
+                  replies: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 6,
+          author: "최웹마스터",
+          date: "2024-12-05 13:00",
+          text: "RequireJS에서 ES6 모듈로 전환 계획도 있으신가요?",
+          replies: [
+            {
+              id: 7,
+              author: "Arongday",
+              date: "2024-12-05 13:20",
+              text: "네, 단계적으로 진행 중입니다. 레거시 시스템이라 신중하게 접근하고 있어요.",
+              replies: [],
+            },
+          ],
+        },
+        {
+          id: 8,
+          author: "정퍼블리셔",
+          date: "2024-12-05 14:10",
+          text: "유익한 글 감사합니다! 실무에 많은 도움이 될 것 같네요.",
+          replies: [],
+        },
+      ];
+
+      // ===== 여기에 재귀 함수를 구현하세요 =====
+      // renderComments 함수를 작성하여 commentsData를 HTML로 변환
+
+      function renderComments(commentList, depth = 0) {
+        // TODO: 재귀 함수 구현
+        // 힌트:
+        // 1. commentList를 순회하면서 각 댓글을 HTML로 변환
+        // 2. depth를 이용해 comment-level-X 클래스 추가
+        // 3. replies가 있으면 재귀 호출
+
+        return ""; // 구현 필요
+      }
+
+      // ==========================================
+
+      // 페이지 로드 시 댓글 렌더링
+      function initComments() {
+        const container = document.getElementById("commentsContainer");
+        const countElement = document.getElementById("commentCount");
+
+        // 전체 댓글 개수 계산 (재귀로 구현해보세요!)
+        function countComments(commentList) {
+          let count = commentList.length;
+          commentList.forEach((comment) => {
+            if (comment.replies && comment.replies.length > 0) {
+              count += countComments(comment.replies);
+            }
+          });
+          return count;
+        }
+
+        const totalCount = countComments(commentsData);
+        countElement.textContent = totalCount;
+
+        // 댓글 렌더링
+        const html = renderComments(commentsData);
+        container.innerHTML = html || '<div class="no-comments">아직 댓글이 없습니다.</div>';
+      }
+
+      // 페이지 로드 완료 후 실행
+      window.addEventListener("DOMContentLoaded", initComments);
+    </script>
+  </body>
+</html>
