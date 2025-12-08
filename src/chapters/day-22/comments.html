@@ -254,38 +254,30 @@
       // renderComments 함수를 작성하여 commentsData를 HTML로 변환
 
       function renderComments(commentList, depth = 0) {
-        let html = "";
+        let html = '';
 
-        console.log('commentList:', commentList);
-        
         commentList.forEach((comment) => {
-          console.log(comment);
-          // depth에 따른 들여쓰기 클래스
-          const levelClass = depth > 0 ? `comment-level-${depth}` : '';
-          // 답글 표시
-          const replyIndicator = depth > 0 ? '<span class="reply-indicator">답글</span>' : '';
+          let replyIndicator = depth > 0 ? '<span class="reply-indicator">답글</span>' : '';
+          let levelClass = depth > 0 ? `comment-level-${depth}` : '';
 
-          // 댓글 HTML 생성
-          html += `<div class="comment comment-level-${depth}">
-            ${replyIndicator}
-            <div class="comment-header">
-              <span class="comment-author">${comment.author}</span>
-              <span class="comment-date">${comment.date}</span>
-            </div>
-            <div class="comment-text">${comment.text}</div>
-            <div class="comment-actions">
-              <button class="comment-action-btn">답글</button>
-              <button class="comment-action-btn">좋아요</button>
-            </div>
-          </div>`
-
-          // 답글이 있으면 재귀 호출
-          if (comment.replies && comment.replies.length > 0) {
+          html += `<div class="comment ${levelClass}">
+              ${replyIndicator}
+              <div class="comment-header">
+                <span class="comment-author">${comment.author}</span>
+                <span class="comment-date">${comment.date}</span>
+              </div>
+              <div class="comment-text">${comment.text}</div>
+              <div class="comment-actions">
+                <button class="comment-action-btn">답글</button>
+                <button class="comment-action-btn">좋아요</button>
+              </div>
+            </div>`;
+          if(comment.replies && comment.replies.length > 0) {
             html += renderComments(comment.replies, depth + 1);
           }
-        });
+        })
 
-        return html
+        return html;
       }
 
       // ==========================================
@@ -302,7 +294,7 @@
             if (comment.replies && comment.replies.length > 0) {
               count += countComments(comment.replies);
             }
-          });
+          })
           return count;
         }
 
