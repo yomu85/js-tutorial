@@ -39,8 +39,8 @@ import "./style.css";
 // Week 4: 프로토타입 & 클래스
 // import "./chapters/day-22/index.js"; window.__currentDay = 22;
 // import './chapters/day-23/index.js'; window.__currentDay = 23;
-import './chapters/day-24/index.js'; window.__currentDay = 24;
-// import './chapters/day-25/index.js'; window.__currentDay = 25;
+// import './chapters/day-24/index.js'; window.__currentDay = 24;
+import './chapters/day-25/index.js'; window.__currentDay = 25;
 // import './chapters/day-26/index.js'; window.__currentDay = 26;
 // import './chapters/day-27/index.js'; window.__currentDay = 27;
 // import './chapters/day-28/index.js'; window.__currentDay = 28;

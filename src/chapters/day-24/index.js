@@ -260,3 +260,69 @@ const su6 = a => b => c => a + b + c;
 //          │    └─────────── 두 번째 매개변수
 //          └──────────────── 첫 번째 매개변수
 console.log(su6(1)(2)(3));
+
+// 과제7
+let x = 1;
+
+function func() {
+  // 실제 초기화가 일어나기 전 변수를 일시적 사용하지 못하는 구간(코드 블록의 시작부터 
+  // let이 나올 때까지)을 '데드 존(dead zone)'이라 부릅니다.
+  console.log(x); //Uncaught ReferenceError: Cannot access 'x' before initialization
+  // let x = 2; // 만약 해당 줄이 존재하지 않았다면 스코프 체인에따라 전역 x를 찾음
+  // var x = 2; // 결과 undefined
+}
+func()
+
+// 과제8
+function inBetween(a, b) {
+  return item => (item >= a && item <= b)
+}
+function inArray(arr) {
+  return item => arr.includes(item)
+}
+let arr8 = [1, 2, 3, 4, 5, 6, 7];
+console.log(arr8.filter(inBetween(3, 6))); // 3, 4, 5, 6
+console.log(arr8.filter(inArray([1, 2, 10]))); // 1, 2
+
+// 과제9
+function byField(field) {
+  if(field === 'name') {
+    return (a, b) => a[field].localeCompare(b[field])
+  } else if(field === 'age') {
+    return (a, b) => a.age - b.age
+  } else {
+  }
+}
+let users = [
+  { name: "John", age: 20, surname: "Johnson" },
+  { name: "Pete", age: 18, surname: "Peterson" },
+  { name: "Ann", age: 19, surname: "Hathaway" }
+];
+
+// 이름으로 정렬
+// users.sort((a, b) => a.name.localeCompare(b.name))
+// users.sort(byField('name'))
+// console.log(users)
+
+// 나이로 정렬
+// users.sort((a, b) => a.age - b.age);
+users.sort(byField('age'))
+console.log(users)
+
+// 과제10
+function makeArmy() {
+  let shooters = [];
+
+  for(let i = 0; i < 10; i++) {
+    let shooter = function() {
+      console.log(i);
+    }
+    shooters.push(shooter);
+  }
+  return shooters;
+}
+
+let army = makeArmy();
+// console.log(army);
+army[0]();
+army[5]();
