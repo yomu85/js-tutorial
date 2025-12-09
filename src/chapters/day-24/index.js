@@ -172,3 +172,91 @@ let name10 = "John";
 
 let work = makeCounter10();
 work();
+
+// 과제3
+function makeCounter3() {
+  let count = 0;
+  return function() {
+    return count++;
+  }
+}
+
+let counter3 = makeCounter3();
+let counter33 = makeCounter3();
+
+console.log(counter3());
+console.log(counter3());
+console.log(counter33());
+console.log(counter33());
+
+// 과제4
+function Counter() {
+  let count = 0; // ← 외부에서 접근 불가! (private)
+
+  this.up = function() {
+    return ++count;
+  }
+  this.down = function() {
+    return --count;
+  }
+}
+
+const count4 = new Counter();
+
+console.log(count4.up());
+console.log(count4.up());
+console.log(count4.down());
+
+// 과제5
+// let phrase = "Hello";
+
+// if (true) {
+//   let user = "John";
+//   function sayHi2() {
+//     console.log(`${phrase}, ${user}`);
+//   }
+// }
+// sayHi2();
+
+let phrase5 = "Hello";
+let sayHi5;
+
+if (true) {
+  let user = "John";
+  sayHi5 = function() {
+    console.log(`${phrase5}, ${user}`);
+  }
+}
+sayHi5();
+
+// 과제6
+function sum6(x) {
+  return function(y) {
+    return x / y;
+  }
+}
+
+console.log(sum6(10)(2));
+
+// URL 생성기
+const makeUrl = protocol => domain => path =>
+  `${protocol}://${domain}/${path}`
+
+console.log(makeUrl('https')('www.example.com')('index.html'));
+
+const sm6 = (a) => { // 첫 번째 화살표
+  return (b) => { // 두 번째 화살표
+    return (c) => { // 세 번째 화살표
+      return a + b + c; // return 값
+    }
+  }
+}
+
+console.log(sm6(1)(2)(3));
+const su6 = a => b => c => a + b + c;
+//          ↑    ↑    ↑    ↑
+//          │    │    │    └─ return 값
+//          │    │    └────── 세 번째 매개변수
+//          │    └─────────── 두 번째 매개변수
+//          └──────────────── 첫 번째 매개변수
+console.log(su6(1)(2)(3));
