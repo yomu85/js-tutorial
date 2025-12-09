@@ -36,9 +36,7 @@ function f() {
 
 f(1); // 1
 
-// 앞서 배운 바와 같이 화살표 함수는 자체 this를 가지지 않습니다. 
-// 여기에 더하여 위 예시를 통해 화살표 함수는 arguments 객체를 지원하지 않는다는 것을 
-// 확인해 보았습니다.
+// 화살표 함수는 자체 this를 가지지 않고, arguments 객체를 지원하지 않습니다.
 
 console.log(Math.max(1, 2, 3, 4, 5));
 
@@ -63,5 +61,25 @@ let str = "Hello";
 console.log([...str]);
 console.log(Array.from(str));
 
-let arr3 = [1, 2, 3];
-let arr3Copy = [...arr3];
+let arrZ = [1, 2, 3];
+let arrZCopy = [...arrZ];
+let arrZe = arrZ;
+
+console.log(JSON.stringify(arrZ) === JSON.stringify(arrZCopy));
+console.log(arrZ === arrZCopy);
+console.log(arrZ === arrZe);
+
+arrZ.push(4);
+console.log(arrZ);
+console.log(arrZCopy);
+
+
+let objZ = { a: 1, b: 2, c: 3 };
+let objZCopy = { ...objZ };
+
+console.log(JSON.stringify(objZ) === JSON.stringify(objZCopy));
+console.log(objZ === objZCopy);
+
+objZ.d = 4;
+console.log(objZ);
+console.log(objZCopy);
