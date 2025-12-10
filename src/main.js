@@ -42,8 +42,8 @@ import "./style.css";
 // import './chapters/day-24/index.js'; window.__currentDay = 24;
 // import './chapters/day-25/index.js'; window.__currentDay = 25;
 // import './chapters/day-26/index.js'; window.__currentDay = 26;
-import './chapters/day-27/index.js'; window.__currentDay = 27;
-// import './chapters/day-28/index.js'; window.__currentDay = 28;
+// import './chapters/day-27/index.js'; window.__currentDay = 27;
+import './chapters/day-28/index.js'; window.__currentDay = 28;
 
 // Week 5: 비동기 & 제너레이터
 // import './chapters/day-29/index.js'; window.__currentDay = 29;
