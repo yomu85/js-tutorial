@@ -216,3 +216,97 @@ f4000("1 throttle", 1);
 f4000("2 throttle", 2);
 f4000("3 throttle", 3);
 
+let userJohn = {
+  firstName: "John",
+  sayHi() {
+    console.log(`Hello, ${this.firstName}!`);
+  }
+}
+
+let sayHi = userJohn.sayHi.bind(userJohn);
+
+sayHi();
+
+setTimeout(sayHi, 1000);
+
+userJohn = { sayHi() { console.log(`또다른 사용자, ${this.firstName}!`); } };
+
+// setTimeout(() => user.sayHi(), 1000);
+// // 1초가 지나기 전에 user의 값이 바뀜
+
+function mul(a, b) {
+  return a * b;
+}
+
+let triple = mul.bind(null, 3);
+
+console.log( triple(4) );
+console.log( triple(5) );
+console.log( triple(6) );
+
+// 요새는 bind 대신 화살표 함수
+
+const tripleArrow = (x) => mul(3, x);
+console.log(tripleArrow(4));
+console.log(tripleArrow(5));
+console.log(tripleArrow(6));
+
+// 과제1
+function f1() {
+  console.log(this)
+}
+
+let user1 = {
+  g: f1.bind(null)
+}
+
+user1.g();
+
+// 과제2
+function sayHi2() {
+  console.log(this.name)
+}
+sayHi2.test = 5;
+
+let bound = sayHi2.bind({ name: "John" });
+
+console.log("과제2", bound.test);
+
+// 과제3
+function askPassword(ok, fail) {
+  let password = prompt("비밀번호를 입력해주세요.", '');
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let user3 = {
+  name: 'John',
+
+  loginOk() {
+    console.log(`${this.name}님이 로그인하였습니다.`);
+  },
+
+  loginFail() {
+    console.log(`${this.name}님이 로그인에 실패하였습니다.`);
+  },
+
+};
+
+askPassword(user3.loginOk.bind(user3), user3.loginFail.bind(user3));
+
+// 과제4
+function askPassword4(ok, fail) {
+  let password = prompt("비밀번호를 입력해주세요.", '');
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let user4 = {
+  name: 'John',
+
+  login(result) {
+    console.log( this.name + (result ? ' 로그인 성공' : ' 로그인 실패') );
+  }
+};
+
+askPassword4(() => user4.login(true), () => user4.login(false));
