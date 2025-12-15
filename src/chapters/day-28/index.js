@@ -310,3 +310,65 @@ let user4 = {
 };
 
 askPassword4(() => user4.login(true), () => user4.login(false));
+
+let group = {
+  title: "1모둠",
+  students: ["보라", "호진", "지민"],
+
+  showList() {
+    this.students.forEach(student => {
+      // 화살표 함수는 new와 함께 실행할 수 없습니다.
+      // 화살표 함수엔 'arguments’가 없습니다
+      // 화살표 함수엔 this가 없ㅅ브니다.
+      console.log(this.title + ": " + student);
+    });
+  }
+}
+
+group.showList();
+
+// let group2 = {
+//   title: "1모둠",
+//   students: ["보라", "호진", "지민"],
+
+//   showList() {
+//     this.students.forEach(function(student) {
+//        // TypeError: Cannot read property 'title' of undefined
+//        // 에러는 forEach에 전달되는 함수의 this가 undefined 이어서 발생했습니다. 
+//       console.log(this.title + ": " + student);
+//     });
+//   }
+// }
+
+// group2.showList();
+
+// 화살표 함수 없이는.. 아래와 같이 한다.
+// function defer(f, ms) {
+//   return function(...args) {
+//     let ctx = this;
+//     setTimeout(function() {
+//       return f.apply(ctx, args)
+//     }, ms);
+//   }
+// }
+
+// function sayHi(who) {
+//   console.log(`Hello, ${who}!`);
+// }
+
+// let sayHiDeferred = defer(sayHi, 2000);
+// sayHiDeferred("John");
+
+// 화살표 함수
+function defer(f, ms) {
+  return function() {
+    setTimeout(() => f.apply(this, arguments), ms);
+  }
+}
+
+function sayHiArrow(who) {
+  console.log(`Hello, ${who}!`);
+}
+
+let sayHiDeferred = defer(sayHiArrow, 2000);
+sayHiDeferred("John");
