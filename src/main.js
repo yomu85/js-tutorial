@@ -43,10 +43,10 @@ import "./style.css";
 // import './chapters/day-25/index.js'; window.__currentDay = 25;
 // import './chapters/day-26/index.js'; window.__currentDay = 26;
 // import './chapters/day-27/index.js'; window.__currentDay = 27;
-import './chapters/day-28/index.js'; window.__currentDay = 28;
+// import './chapters/day-28/index.js'; window.__currentDay = 28;
 
 // Week 5: 비동기 & 제너레이터
-// import './chapters/day-29/index.js'; window.__currentDay = 29;
+import './chapters/day-29/index.js'; window.__currentDay = 29;
 // import './chapters/day-30/index.js'; window.__currentDay = 30;
 // import './chapters/day-31/index.js'; window.__currentDay = 31;
 // import './chapters/day-32/index.js'; window.__currentDay = 32;
