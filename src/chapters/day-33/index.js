@@ -47,7 +47,7 @@ function f(phrase) {
 }
 
 class User extends f("Hello") {
-
+  message = "클래스 필드";
 }
 
 new User().sayHi();
