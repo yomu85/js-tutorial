@@ -26,6 +26,6 @@ function Rabbit3(name) {
 
 let rabbit3 = new Rabbit3("흰 토끼");
 
-console.log(Rabbit3 === Rabbit3.prototype.constructor);  // false
+console.log(Rabbit3 === Rabbit3.prototype.constructor);  // true
 
 let rabbit3Clone = new rabbit3.constructor("검은 토끼");
