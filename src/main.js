@@ -49,8 +49,8 @@ import "./style.css";
 // import './chapters/day-29/index.js'; window.__currentDay = 29;
 // import './chapters/day-30/index.js'; window.__currentDay = 30;
 // import './chapters/day-31/index.js'; window.__currentDay = 31;
-import './chapters/day-32/index.js'; window.__currentDay = 32;
-// import './chapters/day-33/index.js'; window.__currentDay = 33;
+// import './chapters/day-32/index.js'; window.__currentDay = 32;
+import './chapters/day-33/index.js'; window.__currentDay = 33;
 // import './chapters/day-34/index.js'; window.__currentDay = 34;
 // import './chapters/day-35/index.js'; window.__currentDay = 35;
 

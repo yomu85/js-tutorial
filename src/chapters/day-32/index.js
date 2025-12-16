@@ -263,24 +263,32 @@ class MyClass {
 
 // 과제1
 class Clock {
-  // template 초기화
-  constructor() {
-  }
+ constructor(options) {
+  this.template = options.template
+ }
 
-  render() {
-    // new Date() 호출
-    // get 시간, 분, 초 가져와 템플릿 붙이기
+ render() {
+  const date = new Date();
+  let hours = date.getHours();
+  if (hours < 10)  hours = '0' + hours;
+  let minutes = date.getMinutes();
+  if (minutes < 10) minutes = '0' + minutes;
+  let seconds = date.getSeconds();
+  if (seconds < 10) seconds = '0' + seconds;
 
-  }
+  this.theMessage = this.template.replace('h', hours).replace('m', minutes).replace('s', seconds)
+  console.log(this.theMessage);
+ }
 
-  stop() {
-    // clear하기
-  }
-  start() {
-    // 렌더 호출출
-    // setInterval 호출
-  }
+ start() {
+  this.render()
+  this.timer = setInterval(() => this.render(), 1000)
+ }
+
+ stop() {
+  clearInterval(this.timer)
+ }
 }
 
-// template(시분초) 넣어서 생성자함수 생성
-// start 메서드 실행
+const clock = new Clock({template: 'h시m분s초'});
+clock.start();
